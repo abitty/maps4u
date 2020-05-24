@@ -1,0 +1,63 @@
+{% extends 'base.html' %}
+{% load thumbnail %} 
+{% block title %} {{ block.super }} - Карты {% endblock title %}
+
+{% block navtop %}  {% endblock navtop %} 
+
+	{% block page %} 
+	<main>
+		<h1>Старинные карты</h1>
+		<div class="row row-cols-1 row-cols-md-1 row-cols-lg-2">
+		{%  for item in maps %}
+			<div class = "col">
+			<!--{% cycle 'cF' 'c2' 'c3' 'cL' as cardnum silent %}
+			{% if cardnum ==  'cF'  %}
+			<div class = "col-lg-3">
+			{% endif %}-->
+				<div class="card h-100 bg-light border-0 m-2">
+					<div class="card-body">
+						<div class = "row">
+							<div class = "col-sm-12">
+							<a href="{{ item.map.url }}">
+								<h3 class="card-title">{{item.map.title}}</h3>
+							</a>
+							</div>
+						</div>
+						<div class = "row">
+							<div class = "col-12" >
+								{% if item.image %}						
+									{% thumbnail item.image item.map.geometry crop="center" as im %}
+									<a href="{{item.map.url}}">
+									<img class="mx-auto d-block" src="{{im.url}}" align="center" width="{{im.width}}" height="{{im.height}}" alt="{{item.map.category}}- {{item.map.title}} - {{item.map.partnumber}}"/>
+									</a>
+									{% endthumbnail %}					
+								{% endif %}
+							</div>
+						</div>
+						<div class = "row justify-content-end">
+							<div class = "col-5"><small class="text-muted">Арт. {{ item.map.partnumber }}</small></div>
+						</div>
+						<div class = "row justify-content-end">
+							<div class = "col-5"><p class="mb-0">{{item.map.price}} ₽</p></div>
+						</div>
+					</div>
+					<div class="card-footer">
+						<div><p>{{ item.map.annotation }}</p></div>
+					</div>
+				</div>
+			</div>
+			<!--	
+			{% if cardnum == 'cL' %}
+			</div>
+			{% else %} 
+			{% if forloop.last %}
+			</div>
+			{% endif %}
+			{% endif %}
+			-->
+		{% empty %}
+			<p>список пуст.</p>
+		{% endfor %}
+		</div>
+	</main>
+	{% endblock page %}	

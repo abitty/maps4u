@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% load thumbnail %} 
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<header>
+ <div class="header-bg">
+  <img src="images/header-title.png" alt="Как поймать льва в пустыне" />
+ </div>
+</header>
+{% block content %}
+    {% if maps %}
+        {%  for map in maps %}
+	    <div>{{map.title}}</div>
+	    <div>{{map.article}}</div>
+	    <div>
+    		<a data-fancybox="grp {{forloop.counter}}" href="{{map.image.url}}" data-caption="{{map.title}}">
+		    {% thumbnail map.image "200x200" crop="center" as im %}
+			<img class="rounded-circle mx-auto d-block" src="{{im.url}}" align="center" width="{{im.width}}" height="{{im.height}}" alt="{{map.title}}"/>
+		    {% endthumbnail %}
+		</a>
+	    </div>
+	{% endfor %}
+    {% else %}
+        <p>Все подарки кончились.</p>
+    {% endif %}
+{% endblock content %}
+</body>
+</html>

@@ -1,0 +1,97 @@
+{% load static %}
+{% load page_list %}
+<!DOCTYPE html>
+<html lang="ru-ru">
+<head>
+	{% block js_css %}
+	<script src='{% static "/jquery/jquery-3.5.1.min.js"%}'></script>
+	<script src='{% static "/bootstrap/js/bootstrap.min.js" %}'></script>
+	  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+
+	<link href='{% static "/bootstrap/css/bootstrap.min.css"%}' rel="stylesheet">
+	<link href='{% static "/css/maps.css"%}' rel="stylesheet" >
+	<!-- Font Awesome JS -->
+    <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js" integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ" crossorigin="anonymous"></script>
+    <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js" integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY" crossorigin="anonymous"></script>
+	<link rel='stylesheet' href='https://fonts.googleapis.com/css?family=PT+Serif|Kurale|Lobster|Ruslan+Display&subset=cyrillic' rel='stylesheet' type='text/css' media="all" />
+	{% endblock js_css %}
+	{% block fancy %}
+		<link href='{% static "/fancybox/jquery.fancybox.min.css"%}' rel="stylesheet" />
+		<script src='{% static "/fancybox/jquery.fancybox.min.js"%}'></script>
+	{% endblock fancy %}
+	{% block meta %}
+    <meta charset="UTF-8"> 
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+	{% endblock meta %}
+    <title>
+	{% block title %}Старинные карты{% endblock title %}
+	</title>
+	
+</head>
+<body>
+	{% block content %}
+    <div class="container">
+		<div id="toplogo">
+		<h2 class="text-center shadow-sm text-uppercase">Кудыкины горы</h2>
+		<h3 class="text-center align-bottom">коллекция старинных карт</h3>
+		</div>
+		
+		
+		
+		<nav class="navbar navbar-expand-lg navbar-toggleable-md navbar-default sticky-top custom-nav">
+			<button class="navbar-toggler  float-lg-right ml-auto" type="button" data-toggle="collapse" data-target=".topnavbar" aria-controls="topnavbar" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon" style="color:#edd; font-size:1.5em;"><i class="fa fa-bars"></i></span>
+			</button>
+
+			<a class="navbar-brand order-0" href="/">
+				<img src=  '{% static "/images/logo80x80.png"%}' alt="Старинные карты и гравюры">
+			</a>		
+			<div class="navbar-collapse collapse order-1 w-100 order-md-0 topnavbar">
+				<ul class="nav navbar-nav mx-auto">
+					<li class="nav-item ">
+						<a class="nav-link" href="/">Старинные карты</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="/engraving/">Гравюры</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="/accessory/">Стильные штучки</a>
+					</li>
+				</ul>
+			</div>
+			<div class="navbar-collapse collapse order-2 mx-auto w-100 topnavbar" >
+				<ul class="nav navbar-nav mx-auto">	
+					<li class="nav-item dropdown">
+					  <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+						О&nbsp;старых картах
+					  </a>
+					  <div class="dropdown-menu">
+					  {% pages Page %}
+					  </div>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="#about">Контакты</a>
+					</li>
+				</ul>
+				<!--
+				<ul class="nav navbar-nav navbar-right">
+				<li class="nav-item">
+				<span class="navbar-text">
+					+7 (916) 176-71-68
+				</span>
+				</li>
+				</ul> 
+				-->
+			</div>
+		</nav>
+		
+			<!-- Page Content  -->
+		<div class="content">
+		{% block page %}
+		{% endblock page %}
+		</div>
+	</div>
+	{% endblock content %}
+</body>
+</html>

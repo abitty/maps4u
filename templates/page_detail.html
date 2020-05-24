@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+{% load thumbnail %} 
+
+{% block title %} {{ block.super }} - {{map.title}} {% endblock title %}
+{% block page %}
+{% if page %} 
+<h1>{{page.title}}</h1>
+{{page.text|safe}}
+{% endif %} 
+{% endblock page %}

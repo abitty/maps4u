@@ -1,0 +1,143 @@
+ /* The side navigation menu */
+body {
+    font-family: 'PT Serif', sans-serif;
+    background: #fafafa;
+}
+
+p {
+    font-family: 'PT Serif', sans-serif;
+    font-size: 1.0em;
+    font-weight: 300;
+    line-height: 1.5em;
+    color: #433;
+}
+
+blockquote p {
+	font-size: 80% !important;
+	font-family: 'Kurale', serif;
+	color: #433;
+	line-height: 1.3em;
+}
+.blockquote-footer {
+	font-family: 'Kurale', serif;
+	line-height: 1.3em;
+	color: #877;
+}
+
+#toplogo {
+	background-image: url('/static/images/back_main.jpg'); 
+	width: 100%;
+	height:200px;
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+}
+#toplogo h2 {		
+    font-family: 'Kurale', serif;
+    font-size: 4.5em;
+    font-weight: 700;
+	color:#edd;
+    font-family: 'Kurale', serif;
+	text-shadow: 3px 3px 5px #555;
+}
+
+#toplogo h3 {		
+    font-family: 'Kurale', serif;
+    font-size: 2.5em;
+    font-weight: 400;
+	color:#edd;
+	text-shadow: 3px 3px 5px #555;
+    font-family: 'PT Serif', sans-serif;
+}
+
+h1.mapname {
+	font-family: 'Ruslan Display',serif;
+}
+
+a,
+a:hover,
+a:focus {
+    color: inherit;
+    text-decoration: none;
+    transition: all 0.3s;
+}
+i,
+span {
+    display: inline-block;
+}
+
+.custom-nav {
+    background-color: #8e6a7e;
+    border-color: #edd;
+	font-family: 'PT Serif', sans-serif;
+	color: #edd;
+	font-size:1.2em;
+}
+.custom-nav .navbar{
+	padding: 0px 0px; 
+}
+
+.custom-nav .navbar-toggler-icon {
+	color:#edd; 
+	font-size:1.5em;
+}
+ 
+.custom-nav .nav-item .active {
+	color: #fff;
+}
+
+/*change color of links in drop down here*/
+
+.custom-nav .dropdown-menu > li > a:hover,
+.custom-nav .dropdown-menu > li > a:focus {
+    color: #edd;
+    text-decoration: none;
+    background-color: #5e3a4e; 
+}
+
+
+/*Change rollover cell color here*/
+.custom-nav .nav > li > a:hover,
+.custom-nav .nav > li > a:focus {
+    text-decoration: none;
+    background-color: #5e3a4e; 
+}
+
+/*Change active text color here*/
+.custom-nav .navbar-nav .nav-link> li > a {
+    color: #fff; 
+	background-color:#8e6a7e;
+}
+
+
+#.custom-nav .navbar-toggler-icon {
+#background-image: url("data:image/svg+xml;charset=utf8, %3Csvg viewBox=’0 0 32 32′ xmlns=’http://www.w3.org/2000/svg’%3E%3Cpath stroke=’rgba(0, 128, 0, 0.8)’ #stroke-width=’2′ stroke-linecap=’round’ stroke-miterlimit=’10’ d=’M4 8h24M4 16h24M4 24h24’/%3E%3C/svg%3E");
+#color: #edd;
+#}
+
+.custom-nav .navbar-brand {
+	display: inline-block;
+	padding-top: 0px;
+	padding-bottom: 0px;
+	margin-right: 1rem;
+	#position: absolute;
+	#top: calc(-50% - 10px);
+}
+
+
+/* Page content. The value of the margin-left property should match the value of the sidebar's width property */
+div.content {
+  padding: 1px 16px;
+  height: 100%;
+  background-color: #e1d3c61f;
+  border: 1px solid #d9bdcc;
+}
+
+/* On screens that are less than 700px wide, make the sidebar into a topbar */
+@media screen and (max-width: 900px) {
+/*div.content {margin-left: 0;}*/
+}
+
+/* On screens that are less than 400px, display the bar vertically, instead of horizontally */
+@media screen and (max-width: 400px) {
+} 
