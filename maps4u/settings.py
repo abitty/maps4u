@@ -58,8 +58,10 @@ STATIC_URL = '/static/'
 
 STATICFILES_DIRS = [
 	os.path.join(BASE_DIR, "assets"),
-	os.path.join(BASE_DIR, "templates/images/"),
-	os.path.join(BASE_DIR, "templates/css/"),
+	os.path.join(BASE_DIR, "templates"),
+#	os.path.join(BASE_DIR, "templates/images/"),
+#	os.path.join(BASE_DIR, "templates/css/"),
+#	os.path.join(BASE_DIR, "templates/js/"),
 ]
    
 
