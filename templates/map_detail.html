@@ -24,8 +24,8 @@
 					<div><h1 class="mapname">{{map.title}}</h1></div>
 				</div>
 				<div class="col-sm-4">
+					<div><span class="price">Цена: {{ map.price }} руб. </span></div>
 					<div><span>Артикул: {{ map.partnumber }}</span></div>
-					<div><span>Цена: {{ map.price }} руб. </span></div>
 					<div>
 					{% if map.author %}<span>Картограф: {{map.author}}{% endif %}
 					{% if map.year %}<span>{{map.year}}г.{% endif %}

@@ -24,6 +24,7 @@ blockquote p {
 	color: #877;
 }
 
+
 #toplogo {
 	background-image: url('/static/images/back_main.jpg'); 
 	width: 100%;
@@ -132,6 +133,14 @@ div.content {
   background-color: #e1d3c61f;
   border: 1px solid #d9bdcc;
 }
+
+.price span {
+	font-size: 1.5em;
+	font-weight: 800;
+	color: #5e3a4e;
+}
+
+
 
 /* On screens that are less than 700px wide, make the sidebar into a topbar */
 @media screen and (max-width: 900px) {
