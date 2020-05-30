@@ -20,11 +20,8 @@
 			</div>	
 				
 			<div class="row">
-				<div class="col-sm-8">
-					<div><h1 class="mapname">{{map.title}}</h1></div>
-				</div>
 				<div class="col-sm-4">
-					<div><span class="price">Цена: {{ map.price }} руб. </span></div>
+					<div><span class="price">{{ map.price }} ₽ </span></div>
 					<div><span>Артикул: {{ map.partnumber }}</span></div>
 					<div>
 					{% if map.author %}<span>Картограф: {{map.author}}{% endif %}
@@ -33,6 +30,9 @@
 					{% if map.source %}<span>{{map.source}}{% endif %}
 					</div>
 				</div>	
+				<div class="col-sm-8 text-right">
+					<div><h1 class="mapname">{{map.title}}</h1></div>
+				</div>
 			</div>
 			
 			<div>

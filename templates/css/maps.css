@@ -68,7 +68,7 @@ span {
 }
 
 .custom-nav {
-    background-color: #8e6a7e;
+    background-color: #5e3a4e;
     border-color: #edd;
 	font-family: 'PT Serif', sans-serif;
 	color: #edd;
@@ -101,13 +101,13 @@ span {
 .custom-nav .nav > li > a:hover,
 .custom-nav .nav > li > a:focus {
     text-decoration: none;
-    background-color: #5e3a4e; 
+    background-color: #8e6a7e; 
 }
 
 /*Change active text color here*/
 .custom-nav .navbar-nav .nav-link> li > a {
     color: #fff; 
-	background-color:#8e6a7e;
+	background-color: #5e3a4e;
 }
 
 
@@ -125,16 +125,31 @@ span {
 	#top: calc(-50% - 10px);
 }
 
+.border-gradient1 {
+border: 1px solid transparent;
+border-image:  
+    linear-gradient(
+      to bottom, 
+      #5e3a4e, 
+      rgba(83, 58, 78, 0)
+    ) 1 100%;
+
+#linear-gradient(#5e3a4e , #fff);
+#-moz-border-image: -moz-linear-gradient(#5e3a4e , #fff);
+#-webkit-border-image: -webkit-linear-gradient(#5e3a4e , #8e6a7e);
+border-image-slice: 1;
+}
 
 /* Page content. The value of the margin-left property should match the value of the sidebar's width property */
 div.content {
   padding: 1px 16px;
   height: 100%;
   background-color: #e1d3c61f;
-  border: 1px solid #d9bdcc;
+  #border: 1px solid #d9bdcc;
+  #border-right: 3px solid #5e3a4e;
 }
 
-.price span {
+.price {
 	font-size: 1.5em;
 	font-weight: 800;
 	color: #5e3a4e;
