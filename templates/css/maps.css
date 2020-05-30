@@ -1,7 +1,156 @@
- /* The side navigation menu */
+.nav-side-menu {
+	overflow: auto;
+	font-weight: 200;
+	position: fixed;
+	top: 0px;
+	width: 300px;
+	height: 100%;
+	background-color: #5e3a4e;
+	font-family: 'PT Serif', sans-serif;
+	color: #edd;
+	font-size:1.0em;
+}
+.nav-side-menu .brand {
+	background-color: #5e3a4e;
+	background-image: url("/static/images/logo80x80.png");
+	background-repeat: no-repeat;
+	line-height: 80px;
+	display: block;
+}
+.nav-side-menu .toggle-btn {
+  display: none;
+}
+
+.menu-list {
+	margin-left:40px;
+	border-left: 1px dotted #8e6a7e;
+}
+
+.nav-side-menu ul {
+  list-style: none;
+  padding: 0px;
+  margin: 0px;
+  cursor: pointer;
+}
+.nav-side-menu li {
+  list-style: none;
+  padding: 0.5rem 0rem;
+  margin: 0px;
+  cursor: pointer;
+}
+
+.nav-side-menu ul .active,
+.nav-side-menu li .active {
+  /*border-bottom: 1px solid #8e6a7e;*/
+  color: #fff;
+  background-color: #533345;
+}
+.nav-side-menu ul .sub-menu li.active,
+.nav-side-menu li .sub-menu li.active {
+  color: #d19b3d;
+}
+.nav-side-menu ul .sub-menu li.active a,
+.nav-side-menu li .sub-menu li.active a {
+  color: #d19b3d;
+}
+.nav-side-menu ul .sub-menu li,
+.nav-side-menu li .sub-menu li {
+  #background-color: #8e6a7e;
+  padding-left: 10px;
+  margin-left: 10px;
+  font-size:0.8em;
+}
+.nav-side-menu ul .sub-menu li:hover,
+.nav-side-menu li .sub-menu li:hover {
+  background-color: #b094a3;
+}
+.nav-side-menu ul .sub-menu .tags li:hover,
+.nav-side-menu li .sub-menu .tags li:hover {
+  background-color: #8e6a7e;
+}
+
+
+.nav-side-menu li {
+  padding-left: 10px;
+  border-left: 2px solid #5e3a4e;
+} 
+
+
+.nav-side-menu .tags li{
+  padding: 3px 2px !important;
+  margin-top:3px;
+  display: inline-block;
+  font-size: 0.8em;
+  #background-color: #8e6a7e;
+}
+
+ul .tags {
+  padding-left: 15px;
+}
+
+
+.nav-side-menu li a {
+  text-decoration: none;
+  color: #edd;
+}
+
+.nav-side-menu li:hover {
+  border-left: 2px solid #8e6a7e;
+  background-color: #b094a3;
+  -webkit-transition: all 1s ease;
+  -moz-transition: all 1s ease;
+  -o-transition: all 1s ease;
+  -ms-transition: all 1s ease;
+  transition: all 1s ease;
+}
+@media (max-width: 767px) {
+  .nav-side-menu {
+    position: relative;
+    width: 100%;
+    margin-bottom: 0px;
+  }
+  .nav-side-menu .toggle-btn {
+    display: block;
+    cursor: pointer;
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    z-index: 10 !important;
+    padding: 3px;
+    background-color: #5e3a4e;
+    color: #edd;
+    width: 40px;
+    text-align: center;
+  }
+.menu-list {
+	margin-left:25px;
+	border-left: 1px dotted #8e6a7e;
+}
+  .brand {
+	background-image: url("/static/images/logo80x80.png");
+	background-repeat: no-repeat;
+	background-size: 50px;
+    text-align: left !important;
+    font-size: 22px;
+    padding-left: 20px;
+    line-height: 50px !important;
+  }
+}
+@media (min-width: 767px) {
+  .nav-side-menu .menu-list .menu-content {
+    display: block;
+  }
+  #main {
+  	width:calc(100% - 300px);
+  	float: right;
+  }
+}
+
 body {
-    font-family: 'PT Serif', sans-serif;
-    background: #fafafa;
+	margin: 0px;
+	padding: 0px;
+	font-family: 'PT Serif', sans-serif;
+	background: #fafafa;
 }
 
 p {
@@ -24,18 +173,19 @@ blockquote p {
 	color: #877;
 }
 
-
 #toplogo {
 	background-image: url('/static/images/back_main.jpg'); 
 	width: 100%;
 	height:200px;
+	position: initial;
 	background-position: center;
 	background-repeat: no-repeat;
 	background-size: cover;
 }
 #toplogo h2 {		
     font-family: 'Kurale', serif;
-    font-size: 4.5em;
+    #font-size: 4.5em;
+	font-size: 7vmax;
     font-weight: 700;
 	color:#edd;
     font-family: 'Kurale', serif;
@@ -44,7 +194,8 @@ blockquote p {
 
 #toplogo h3 {		
     font-family: 'Kurale', serif;
-    font-size: 2.5em;
+    #font-size: 2.5em;
+	font-size: 3vmax;
     font-weight: 400;
 	color:#edd;
 	text-shadow: 3px 3px 5px #555;
@@ -67,79 +218,7 @@ span {
     display: inline-block;
 }
 
-.custom-nav {
-    background-color: #5e3a4e;
-    border-color: #edd;
-	font-family: 'PT Serif', sans-serif;
-	color: #edd;
-	font-size:1.2em;
-}
-.custom-nav .navbar{
-	padding: 0px 0px; 
-}
-
-.custom-nav .navbar-toggler-icon {
-	color:#edd; 
-	font-size:1.5em;
-}
- 
-.custom-nav .nav-item .active {
-	color: #fff;
-}
-
-/*change color of links in drop down here*/
-
-.custom-nav .dropdown-menu > li > a:hover,
-.custom-nav .dropdown-menu > li > a:focus {
-    color: #edd;
-    text-decoration: none;
-    background-color: #5e3a4e; 
-}
-
-
-/*Change rollover cell color here*/
-.custom-nav .nav > li > a:hover,
-.custom-nav .nav > li > a:focus {
-    text-decoration: none;
-    background-color: #8e6a7e; 
-}
-
-/*Change active text color here*/
-.custom-nav .navbar-nav .nav-link> li > a {
-    color: #fff; 
-	background-color: #5e3a4e;
-}
-
-
-#.custom-nav .navbar-toggler-icon {
-#background-image: url("data:image/svg+xml;charset=utf8, %3Csvg viewBox=’0 0 32 32′ xmlns=’http://www.w3.org/2000/svg’%3E%3Cpath stroke=’rgba(0, 128, 0, 0.8)’ #stroke-width=’2′ stroke-linecap=’round’ stroke-miterlimit=’10’ d=’M4 8h24M4 16h24M4 24h24’/%3E%3C/svg%3E");
-#color: #edd;
-#}
-
-.custom-nav .navbar-brand {
-	display: inline-block;
-	padding-top: 0px;
-	padding-bottom: 0px;
-	margin-right: 1rem;
-	#position: absolute;
-	#top: calc(-50% - 10px);
-}
-
-.border-gradient1 {
-border: 1px solid transparent;
-border-image:  
-    linear-gradient(
-      to bottom, 
-      #5e3a4e, 
-      rgba(83, 58, 78, 0)
-    ) 1 100%;
-
-#linear-gradient(#5e3a4e , #fff);
-#-moz-border-image: -moz-linear-gradient(#5e3a4e , #fff);
-#-webkit-border-image: -webkit-linear-gradient(#5e3a4e , #8e6a7e);
-border-image-slice: 1;
-}
-
+/
 /* Page content. The value of the margin-left property should match the value of the sidebar's width property */
 div.content {
   padding: 1px 16px;
@@ -149,10 +228,28 @@ div.content {
   #border-right: 3px solid #5e3a4e;
 }
 
+.container {
+	padding-left: 0px;
+	padding-right: 0px;
+  background-color: #e1d3c61f;
+  border-right: 3px solid #5e3a4e; 
+	
+}
+
 .price {
 	font-size: 1.5em;
 	font-weight: 800;
 	color: #5e3a4e;
+}
+
+.map-footer {
+	background-color: #f8f9fa;
+}
+.map-body {
+	background-color: #f8f9fa;
+	border-bottom: 3px solid transparent;
+	border-image: linear-gradient(to right,#f8f9fa 0%,#5e3a4e 50% ,#f8f9fa 100%);
+	border-image-slice: 1;
 }
 
 
