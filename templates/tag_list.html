@@ -1,0 +1,4 @@
+{% for item in items %}
+<li><a class="" href="/tags/{{item.id}}">{{item.tag}}</a></li>
+{% empty %}
+{% endfor %}
