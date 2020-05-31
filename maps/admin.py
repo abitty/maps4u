@@ -26,7 +26,7 @@ class ProductAdmin(admin.ModelAdmin):
 	fields = [('category','tags'),('title','slug'),('partnumber','price','sold'),('epigraph','epigraph_author','year'),('annotation','description'),('author','material','source','carton','glass'),('meta_desc','meta_title','meta_h1')]
 	
 	def prod_image(self, obj):
-		if obj.image:
+		if obj.image() and obj.image().url:
 			return mark_safe("<img src='{}'  width='64' height='64' />".format(obj.image().url))
 		else:
 			return "-"

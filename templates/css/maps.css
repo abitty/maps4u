@@ -175,6 +175,7 @@ blockquote p {
 
 .ratio {
     width: 100%; /* здесь можно установить любую нужную ширину */
+	height: 300px;	
 }
 
 .ratio-inner {
@@ -198,7 +199,7 @@ blockquote p {
 
 
 #toplogo {
-	background-image: url('/static/images/back_main.jpg'); 
+	background-image: url('/static/images/header4d_c.jpg'); 
 	width: 100%;
 	height:200px;
 	position: initial;
@@ -209,7 +210,7 @@ blockquote p {
 #toplogo h2 {		
     font-family: 'Kurale', serif;
     #font-size: 4.5em;
-	font-size: 7vmax;
+	font-size: 6vmax;
 	/*font-size: calc(4vw + 4vh + 2vmin)*/
     font-weight: 700;
 	color:#edd;
@@ -220,7 +221,7 @@ blockquote p {
 #toplogo h3 {		
     font-family: 'Kurale', serif;
     #font-size: 2.5em;
-	font-size: 3vmax;
+	font-size: 2vmax;
 	/*font-size: calc((4vw + 4vh + 2vmin)*0.3)*/
     font-weight: 400;
 	color:#edd;

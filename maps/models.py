@@ -89,8 +89,8 @@ class Product(models.Model):
 	category = models.ForeignKey("Category",on_delete=models.CASCADE)
 	tags = models.ManyToManyField(Tag,db_index=True,blank=True)
 	#images = models.ForeignKey(Images,on_delete=models.CASCADE)
-	slug = models.SlugField(allow_unicode=False,unique=True,db_index=True)
-	title = models.CharField("Название", max_length=128,blank=False,db_index=True,unique=True)
+	slug = models.SlugField(allow_unicode=False,db_index=True)
+	title = models.CharField("Название", max_length=128,blank=False,db_index=True)
 	partnumber = models.CharField("Артикул", max_length=16,blank=False, db_index=True)
 	annotation  = models.TextField("Аннотация", blank=True)
 	description = models.TextField("Описание",blank=True)
@@ -104,9 +104,9 @@ class Product(models.Model):
 	glass = models.IntegerField("Стекло", choices = GLASS_CHOICES, blank=True,null=True,default=None)
 	price = models.IntegerField("Цена", db_index=True)
 	sold = models.BooleanField("Продано", default = False, db_index=True)
-	meta_desc = models.CharField("meta-description",max_length=63,blank=False)
-	meta_title = models.CharField("meta-title",max_length=63,blank=False)
-	meta_h1= models.CharField("meta-h1",max_length=63,blank=False)
+	meta_desc = models.CharField("meta-description",max_length=63,blank=True,null=True,default=None)
+	meta_title = models.CharField("meta-title",max_length=63,blank=True,null=True,default=None)
+	meta_h1= models.CharField("meta-h1",max_length=63,blank=True,null=True,default=None)
 	vertical = models.BooleanField("Вертикально", default=True)
 
         
@@ -133,7 +133,11 @@ class Product(models.Model):
 		return result
 		
 	def image(self):
-		return Image.objects.filter(product=self).order_by('order').first().image
+		try:
+			img = Image.objects.filter(product=self).order_by('order').first().image
+		except AttributeError:
+			img = None
+		return img
 		
 	def geometry(self):
 		if self.vertical:
@@ -142,6 +146,28 @@ class Product(models.Model):
 			return "320"
 	def url(self):
 		return "/items/{}".format(self.slug)
+		
+	def _get_unique_slug(self):
+		#slug = slugify(self.title)
+		unique_slug = self.slug
+		num = 1
+		while Product.objects.filter(slug=unique_slug).exists():
+			unique_slug = '{}-{}'.format(self.slug, num)
+			print ("try new slug: ", unique_slug)
+			num += 1
+		return unique_slug
+
+	def save(self, *args, **kwargs):
+		if self.pk is None:
+			self.slug = self._get_unique_slug()
+		if not self.meta_desc:
+			self.meta_desc = self.annotation[:63]
+		if not self.meta_h1:
+			self.meta_h1 = self.title[:63]
+		if not self.meta_title:
+			self.meta_title = self.title[:63]
+		super().save(*args, **kwargs)		
+		
         
 class Image(models.Model):
 	product = models.ForeignKey(Product,related_name="images",on_delete=models.CASCADE,null=True,blank=True)
