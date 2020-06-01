@@ -7,15 +7,15 @@
 	{% block js_css %}
 	<script src='{% static "/jquery/jquery-3.5.1.min.js"%}'></script>
 	<script src='{% static "/bootstrap/js/bootstrap.min.js" %}'></script>
-	  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+	<script src='{% static "/popper/popper.min.js" %}'></script>
 
 	<link href='{% static "/bootstrap/css/bootstrap.min.css"%}' rel="stylesheet">
-	<link href='{% static "/css/maps.css"%}' rel="stylesheet" >
 	<!-- Font Awesome JS -->
     <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js" integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ" crossorigin="anonymous"></script>
     <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js" integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY" crossorigin="anonymous"></script>
 	<link rel='stylesheet' href='https://fonts.googleapis.com/css?family=PT+Serif|Kurale|Lobster|Ruslan+Display&subset=cyrillic' rel='stylesheet' type='text/css' media="all" />
 	{% endblock js_css %}
+	<link href='{% static "/css/custom.css" %}' rel="stylesheet" >
 	{% block fancy %}
 		<link href='{% static "/fancybox/jquery.fancybox.min.css"%}' rel="stylesheet" />
 		<script src='{% static "/fancybox/jquery.fancybox.min.js"%}'></script>
@@ -32,6 +32,7 @@
 </head>
 <body>
 	{% block content %}
+	<!--
 <div class="nav-side-menu">
     <div class="brand"><a href="/" class="strethed-link">&nbsp;</a>
 	</div>
@@ -68,19 +69,37 @@
         </ul>
     </div>
 </div>
-<div class="container-fluid p-0 m-0" id="main">
+-->
+<div class="container-lg">
     <div class="row"> 
-		<div id="toplogo" class="ratio" >
-			<div class="ratio-inner ratio5-1">
-				<div class="ratio-content">
-					<h2 class="text-center shadow-sm text-uppercase">Кудыкины горы</h2>
-					<h3 class="text-center align-bottom ">коллекция старинных карт</h3>
-				</div>
-			</div>
+		<div class="col-md-3 p-0">
+			<nav class="nav flex-md-column">
+				<a class="nav-link" href="/">Старинные карты</a>
+				<a class="nav-link" href="/engraving/">Гравюры</a>
+				<a class="nav-link" href="/accessory/">Стильные штучки</a>
+			</nav>		
 		</div>
-        <div class="col-md-12">
-		{% block page %}
-		{% endblock page %}
+		<div class="col-md-9 p-0">
+			<div class="row">
+				<div class="col imgback" id="toplogo">
+					
+							<h2 class="text-center shadow-sm align-top text-uppercase">Кудыкины горы</h2>
+							<h3 class="text-center align-bottom ">коллекция старинных карт</h3>
+				<!--
+				<div id="toplogo" class="ratio" >
+					<div class="ratio-inner ratio5-1">
+						<div class="ratio-content">
+							<h2 class="text-center shadow-sm text-uppercase">Кудыкины горы</h2>
+							<h3 class="text-center align-bottom ">коллекция старинных карт</h3>
+						</div>
+					</div>
+				</div>
+				-->
+			</div>
+			<div class="col-md-12">
+			{% block page %}
+			{% endblock page %}
+			</div>
 		</div>
     </div> 
 </div>	

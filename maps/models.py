@@ -83,7 +83,7 @@ class Product(models.Model):
 		)
 	GLASS_CHOICES = (
 		(0,'безбликовое стекло'),
-		(1,'обычное стекло'),
+		(1,'консервационное стекло 2 мм'),
 	)
 
 	category = models.ForeignKey("Category",on_delete=models.CASCADE)
@@ -104,6 +104,8 @@ class Product(models.Model):
 	glass = models.IntegerField("Стекло", choices = GLASS_CHOICES, blank=True,null=True,default=None)
 	price = models.IntegerField("Цена", db_index=True)
 	sold = models.BooleanField("Продано", default = False, db_index=True)
+	mapsize = models.CharField("Размер поля карты",max_length=32,blank=True,null=True,default=None)
+	framesize = models.CharField("Размер рамы",max_length=32,blank=True,null=True,default=None)
 	meta_desc = models.CharField("meta-description",max_length=63,blank=True,null=True,default=None)
 	meta_title = models.CharField("meta-title",max_length=63,blank=True,null=True,default=None)
 	meta_h1= models.CharField("meta-h1",max_length=63,blank=True,null=True,default=None)

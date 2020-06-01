@@ -34,6 +34,42 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/' # для медии в шаблонах
 FILE_UPLOAD_PERMISSIONS = 0o644
 
+CKEDITOR_UPLOAD_PATH = "uploads/"
+CKEDITOR_JQUERY_URL = "https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"
+CKEDITOR_IMAGE_BACKEND = 'pillow'
+CKEDITOR_BROWSE_SHOW_DIRS =True
+
+CKEDITOR_CONFIGS = {
+    'default': {
+        'toolbar': 'full',
+		'extraPlugins': ','.join([
+            'uploadimage', # the upload image feature
+            # your extra plugins here
+            'autolink',
+            'autoembed',
+            'autogrow',
+            'widget',
+			'uploadwidget',
+			'filetools',
+            'lineutils',
+            'clipboard',
+            'dialog',
+            'dialogui',
+            'elementspath'
+        ]),
+        #'height': 300,
+        'width': '100%',
+		#'toolbar': 'Custom',
+        #'toolbar_Custom': [
+        #    ['Bold', 'Italic', 'Underline'],
+        #   ['NumberedList', 'BulletedList', '-', 'Outdent', 'Indent', '-', 'JustifyLeft', 'JustifyCenter', 'JustifyRight', 'JustifyBlock'],
+        #    ['Link', 'Unlink'],
+        #    ['RemoveFormat', 'Source']
+        #]
+    },
+}
+
+
 THUMBNAIL_FORMAT = 'JPEG'
 THUMBNAIL_KVSTORE = 'sorl.thumbnail.kvstores.redis_kvstore.KVStore'
 THUMBNAIL_REDIS_HOST = 'localhost' # default
@@ -98,6 +134,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'sorl.thumbnail',
 	'rest_framework',
+	'ckeditor',
+	'ckeditor_uploader',
     'maps',
 ]
 

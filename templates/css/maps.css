@@ -201,7 +201,7 @@ blockquote p {
 #toplogo {
 	background-image: url('/static/images/header4d_c.jpg'); 
 	width: 100%;
-	height:200px;
+	/*height:200px;*/
 	position: initial;
 	background-position: center;
 	background-repeat: no-repeat;

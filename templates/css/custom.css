@@ -1,0 +1,91 @@
+/*
+$ colors: (
+bg-100: #533345,
+bg-75: #5e3a4e,
+bg-50: #8e6a7e,
+bg-25: #d19b3d
+);
+*/
+
+.nav {
+	background-color: #5e3a4e;
+	color: #edd;
+}
+.nav-link {
+	color: #edd;
+}
+.nav-link:focus, 
+.nav-link:hover {
+	color: #fff;
+}
+
+.imgback {
+	background-image: url('/static/images/header4d_c.jpg'); 
+	width: 100%;
+	#height:200px;
+	position: initial;
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+}
+
+#toplogo h2 {		
+    font-family: 'Kurale', serif;
+	font-size: 6vmax;
+    font-weight: 700;
+	color:#edd;
+    font-family: 'Kurale', serif;
+	text-shadow: 3px 3px 5px #555;
+}
+
+#toplogo h3 {		
+    font-family: 'Kurale', serif;
+    #font-size: 2.5em;
+	font-size: 2vmax;
+	/*font-size: calc((4vw + 4vh + 2vmin)*0.3)*/
+    font-weight: 400;
+	color:#edd;
+	text-shadow: 3px 3px 5px #555;
+    font-family: 'PT Serif', sans-serif;
+}
+
+
+
+body {
+	margin: 0px;
+	padding: 0px;
+	font-family: 'PT Serif', sans-serif;
+	background: #fafafa;
+}
+
+p {
+    font-family: 'PT Serif', sans-serif;
+    font-size: 1.0em;
+    font-weight: 300;
+    line-height: 1.5em;
+    color: #433;
+}
+
+blockquote p {
+	font-size: 80% !important;
+	font-family: 'Kurale', serif;
+	color: #433;
+	line-height: 1.3em;
+}
+.blockquote-footer {
+	font-family: 'Kurale', serif;
+	line-height: 1.3em;
+	color: #877;
+}
+
+h1.mapname {
+	font-family: 'Ruslan Display',serif;
+}
+
+a {
+	color: inherit;
+	text-decoration: none;
+}
+a:hover {
+	text-decoration: none;
+}
