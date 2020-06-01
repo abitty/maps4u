@@ -2,10 +2,10 @@ from django.contrib import admin
 from django.contrib.contenttypes.admin import GenericTabularInline 
 from django.utils.safestring import mark_safe
 from maps.models import Image, Product, Category, Tag, Page
+from django_summernote.admin import SummernoteModelAdmin
 
 from django import forms
-from ckeditor.widgets import CKEditorWidget
-from ckeditor_uploader.widgets import CKEditorUploadingWidget 	
+from django.db import models
 
 
 # Register your models here.
@@ -17,17 +17,7 @@ class ProductImageInline(admin.TabularInline):
 	def render(self,obj):
 		return mark_safe('<img src="{}" width="64" height="64" />'.format(obj.image.url))
 	
-class ProductAdminForm(forms.ModelForm):
-	description = forms.CharField(widget=CKEditorWidget())
-	fields=['description',]
-	class Meta:
-		model = Product
-		fields = '__all__'
-		widgets = {
-           'description': CKEditorUploadingWidget()
-        }
-	
-class ProductAdmin(admin.ModelAdmin):
+class ProductAdmin(SummernoteModelAdmin): #admin.ModelAdmin
 	inlines = [
 		ProductImageInline,
 	]
@@ -38,9 +28,17 @@ class ProductAdmin(admin.ModelAdmin):
 	search_fields = ['title','partnumber']
 	readonly_fields=['prod_image']
 	fields = [('category','tags'),('title','slug','meta_desc','meta_title','meta_h1'),('partnumber','price','sold'),('annotation','epigraph','epigraph_author','year'),('description'),('author','source','material'),('carton','glass'),('mapsize','framesize')]
-    #form = ProductAdminForm		
-	form = ProductAdminForm
-	
+	summernote_fields = ('description',)
+	'''
+	formfield_overrides = {
+            models.TextField: {'widget': AdminRedactorEditor(redactor_settings={
+        'autoformat': True,
+		'buttons': ['html', 'format', 'bold', 'italic', 'deleted', 'lists', 'image', 'file', 'link','redo', 'undo', 'underline', 'ol', 'ul', 'indent', 'outdent', 'sup', 'sub'],
+		'pastePlainText': True,
+        'overlay': False,
+    })},
+    }
+	'''
 	def prod_image(self, obj):
 		if obj.image() and obj.image().url:
 			return mark_safe("<img src='{}'  width='64' height='64' />".format(obj.image().url))

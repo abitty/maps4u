@@ -34,39 +34,47 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/' # для медии в шаблонах
 FILE_UPLOAD_PERMISSIONS = 0o644
 
-CKEDITOR_UPLOAD_PATH = "uploads/"
-CKEDITOR_JQUERY_URL = "https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"
-CKEDITOR_IMAGE_BACKEND = 'pillow'
-CKEDITOR_BROWSE_SHOW_DIRS =True
+X_FRAME_OPTIONS = 'SAMEORIGIN'
+SUMMERNOTE_THEME = 'bs3'  # Show summernote with Bootstrap4
 
-CKEDITOR_CONFIGS = {
-    'default': {
-        'toolbar': 'full',
-		'extraPlugins': ','.join([
-            'uploadimage', # the upload image feature
-            # your extra plugins here
-            'autolink',
-            'autoembed',
-            'autogrow',
-            'widget',
-			'uploadwidget',
-			'filetools',
-            'lineutils',
-            'clipboard',
-            'dialog',
-            'dialogui',
-            'elementspath'
-        ]),
-        #'height': 300,
-        'width': '100%',
-		#'toolbar': 'Custom',
-        #'toolbar_Custom': [
-        #    ['Bold', 'Italic', 'Underline'],
-        #   ['NumberedList', 'BulletedList', '-', 'Outdent', 'Indent', '-', 'JustifyLeft', 'JustifyCenter', 'JustifyRight', 'JustifyBlock'],
-        #    ['Link', 'Unlink'],
-        #    ['RemoveFormat', 'Source']
-        #]
-    },
+
+SUMMERNOTE_CONFIG = {
+	# Using SummernoteWidget - iframe mode, default
+	'iframe': True,
+
+	# Or, you can set it as False to use SummernoteInplaceWidget by default - no iframe mode
+	# In this case, you have to load Bootstrap/jQuery stuff by manually.
+	# Use this when you're already using Bootstraip/jQuery based themes.
+	#'iframe': False,
+
+	# You can put custom Summernote settings
+	'summernote': {
+		# As an example, using Summernote Air-mode
+		'airMode': False,
+
+		# Change editor size
+		'width': '100%',
+		'height': '480',
+
+		# Use proper language setting automatically (default)
+		'lang': None,
+		
+		# Toolbar customization
+		# https://summernote.org/deep-dive/#custom-toolbar-popover
+		'toolbar': [
+			['style', ['style']],
+			['font', ['bold', 'italic', 'clear']],
+			['fontname', ['Kurale','PT cerif','Segoy UI']],
+			['para', ['ul', 'ol', 'paragraph']],
+			['insert', ['link', 'picture']],
+			['view', ['fullscreen', 'undo', 'redo']],
+		],
+
+		# Or, set editor language/locale forcely
+		'lang': 'ru-RU',
+	},
+	# Need authentication while uploading attachments.
+	'attachment_require_authentication': False,
 }
 
 
@@ -134,8 +142,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'sorl.thumbnail',
 	'rest_framework',
-	'ckeditor',
-	'ckeditor_uploader',
+	'django_summernote',
     'maps',
 ]
 
