@@ -5,7 +5,7 @@
 {% block navtop %} {{ block.super }} {% endblock navtop %} 
 {% block navleft %} {{ block.super }} {% endblock navleft %}
 	{% block page %} 
-	<div class="container-fluid">
+	<!--<div class="container-fluid"> -->
 		{% if map %}
 			<div class="row">
 				{% for img in images %}
@@ -48,5 +48,5 @@
 		{% else %}
 			<p>такой карты нет.</p>
 		{% endif %}
-	</div>
+<!--	</div> -->
 	{% endblock page %}	

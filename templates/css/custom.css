@@ -24,22 +24,53 @@ bg-25: #d19b3d
 }
 
 .imgback {
-	background-image: url('/static/images/header4d_c.jpg'); 
+	#background-image: url('/static/images/header4d_c.jpg'); 
+	background: linear-gradient(90deg, rgba(94, 58, 78, 1), rgba(94, 58, 78, 0.1) 25%),url('/static/images/header4d_c.jpg');   #5e3a4e = rgba(94, 58, 78, 1)
 	width: 100%;
 	#height:200px;
 	position: initial;
 	background-position: center;
 	background-repeat: no-repeat;
 	background-size: cover;
+	margin: 0px 15px;
 }
+
+.navbar-brand {
+	background-image: url('/static/images/logo80x80.png'); 
+	width: 80px;
+	height: 80px;
+	background-size: cover;
+	margin-right: 0px;
+}
+
+.line-h {
+	height:80px;
+	position: relative;
+}
+
+.line-h:before { content: '';
+  position: absolute;
+  border-bottom:1px solid transparent;
+  border-image: linear-gradient(90deg, rgb(143, 107, 127), rgba(94, 58, 78, 0.1) 80%);
+  border-image-slice: 1; 
+  height: 100%;
+  width: 100%;
+  transform: translateY(-50%);
+   }
+   
+.dropdown-divider {
+	border-color: #8E6A7E;
+}   
 
 #toplogo h2 {		
     font-family: 'Kurale', serif;
-	font-size: 6vmax;
+	#font-size: 6vmax;
+	font-size: calc((4vw + 4vh )*0.7)
     font-weight: 700;
 	color:#edd;
     font-family: 'Kurale', serif;
 	text-shadow: 3px 3px 5px #555;
+	white-space: nowrap;
 }
 
 #toplogo h3 {		
@@ -92,4 +123,21 @@ a {
 }
 a:hover {
 	text-decoration: none;
+}
+
+@media (max-width: 767.98px) {
+	.imgback {
+		background: linear-gradient(180deg, rgba(94, 58, 78, 1) , rgba(94, 58, 78, 0.1)) 20%,url('/static/images/header4d_c.jpg'); 
+	}
+	.navbar-brand {
+		background-image: url('/static/images/logo80x80.png'); 
+		width: 40px;
+		height: 40px;
+		background-size: cover;
+	}
+.line-h {
+	height:40px;
+	position: relative;
+}
+	
 }
