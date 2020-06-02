@@ -58,16 +58,23 @@ SUMMERNOTE_CONFIG = {
 
 		# Use proper language setting automatically (default)
 		'lang': None,
+		'styleTags': [
+		'p',
+		{'title': 'Эпиграф', 'tag': 'blockquote', 'className': 'blockquote text-right epigraph', 'value': 'blockquote' },
+		{'title': 'Автор эпиграфа','tag':'footer','className':'blockquote-footer  font-wieght-lighter','value':'footer'},
+		'h1','h2','h3','h4','h5',
+		'footer','blockquote',
+		],
 		
 		# Toolbar customization
 		# https://summernote.org/deep-dive/#custom-toolbar-popover
 		'toolbar': [
+			['view', ['codeview','fullscreen', 'undo', 'redo']],
 			['style', ['style']],
 			['font', ['bold', 'italic', 'clear']],
 			['fontname', ['Kurale','PT cerif','Segoy UI']],
 			['para', ['ul', 'ol', 'paragraph']],
 			['insert', ['link', 'picture']],
-			['view', ['fullscreen', 'undo', 'redo']],
 		],
 
 		# Or, set editor language/locale forcely
