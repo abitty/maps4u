@@ -3,18 +3,10 @@ from django.http import HttpResponse
 from django.views.generic.list import ListView
 from django.views.generic.detail import DetailView
 from maps.models import Product, Image, Page
+from django.core.paginator import Paginator
 
 # Create your views here.
-def AllMaps(request):
-    return HttpResponse("Коллекция старинных карт")
-	
-class MapList(ListView):
-	model = Product
-	paginate_by = 20
-	context_object_name = 'maps'
-	template_name='map_list.html'
-	def get_queryset(self):
-		#mp = Product.objects.filter(sold=False).order_by("title")
+def map_pages(request,page):
 		mp = Product.objects.select_related('category').filter(sold=False,category=4).order_by("title")
 		
 		res=[]
@@ -26,7 +18,34 @@ class MapList(ListView):
 			item['category'] = m.category
 			res.append(item)
 		
+			paginator = Paginator(res, 10)
+			print ("map_pages")
 		return res
+	
+class MapList(ListView):
+	#model = Product
+	paginate_by = 10
+	context_object_name = 'maps'
+	template_name='map_list.html'
+	def get_queryset(self):
+		#mp = Product.objects.filter(sold=False).order_by("title")
+		mp = Product.objects.select_related('category').filter(sold=False,category=4).order_by("title")
+		
+		res=[]
+		print ("MapList")
+		for m in mp:
+			item = {}
+			images = []
+			item['map']= m
+			item['image'] = m.image()
+			item['category'] = m.category
+			res.append(item)
+		
+			#paginator = Paginator(res, 10)
+		return res
+		
+		
+		
 		
 class MapDetail(DetailView):
 	model = Product
@@ -55,7 +74,6 @@ class GravList(ListView):
 			item['image'] = m.image()
 			item['category'] = m.category
 			res.append(item)
-		
 		return res
 
 class AccList(ListView):

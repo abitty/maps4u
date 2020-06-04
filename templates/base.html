@@ -32,89 +32,72 @@
 </head>
 <body>
 	{% block content %}
-	<!--
-<div class="nav-side-menu">
-    <div class="brand"><a href="/" class="strethed-link">&nbsp;</a>
-	</div>
-    <i class="fa fa-bars fa-2x toggle-btn" data-toggle="collapse" data-target="#menu-content"></i>
-    <div class="menu-list">
-        <ul id="menu-content" class="menu-content collapse out">
-			<li class="nav-item active">
-				<a href="/">Старинные карты</a>
-			</li>
-			<li class="nav-item">
-				<a href="/engraving/">Гравюры</a>
-			</li>
-			<li class="nav-item">
-				<a href="/accessory/">Стильные штучки</a>
-			</li>
-			
-            <li data-toggle="collapse" data-target="#products" class="collapsed nav-item dropdown-toggle">
-                <a href="#">О&nbsp;старых картах</a>
-            </li>
-            <ul class="sub-menu collapse" id="products">
-					  {% pages Page %}
-            </ul>
-
-			<li class="nav-item">
-				<a href="#">Контакты</a>
-			</li>
-            <li data-toggle="collapse" data-target="#tag_list" class="collapsed nav-item dropdown-toggle">
-                <a href="#">Метки</a>
-            </li>
-			<ul class="sub-menu tags" id="tag_list">
-						{% tags Tag %}
-            </ul>
-
-        </ul>
-    </div>
-</div>
--->
-<div class="container-lg">
-    <div class="row"> 
-		<div class="col-md-3 p-0 navdiv">
-			<nav class="nav flex-md-column">
-				<div class="d-flex flex-row">
-					 <div class="navbar-brand " href="#">&nbsp;</div>
-					 <div class="line-h flex-grow-1"></div>
-				 </div>
-				 
-				<li class="nav-item flex-fill"><a class="nav-link" href="/">Старинные карты</a></li>
-				<li class="nav-item flex-fill"><a class="nav-link" href="/engraving/">Гравюры</a></li>
-				<li class="nav-item flex-fill"><a class="nav-link flex-fill" href="/accessory/">Стильные штучки</a></li>
-				<li class="nav-item  flex-fill dropdown-toggle nav-link" data-toggle="collapse" data-target="#id_pages" aria-expanded="False" role="button">
-					<a  href="#">О&nbsp;старых картах</a>
-				</li>
-				<div class="collapse" id="id_pages">
-					  {% pages Page %}
-				</div>
-				<li class="nav-item flex-fill"><a class="nav-link flex-fill" href="/page/contacts/">Контакты</a></li>
-				
-			</nav>		
-			<nav class="nav flex-md-column flex-grow-1">
-				<div class="dropdown-divider"></div>
-				<li class="nav-item nav-link flex-fill dropdown-toggle" data-toggle="collapse" data-target="#tag_list" >
-					<a href="#">Метки</a>
-				</li>
-				<div class="collapse" id="tag_list">
-							{% tags Tag %}
-				</div>
-			</nav>
-		</div>
-		<div class="col-md-9 p-0">
-			<div class="row"> 
-				<div class="col imgback" id="toplogo">
-					<h2 class="text-center shadow-sm align-top text-uppercase">Кудыкины горы</h2>
-					<h3 class="text-center align-bottom ">коллекция старинных карт</h3>
-				</div>
-				<div class="col-md-12">
-					{% block page %}
-					{% endblock page %}
-				</div>
+	<div class="container-lg">
+		<div class="row"> 
+			<div class="col-md-3 p-0 navdiv">
+				<nav class="nav  flex-md-column">
+					<div class="d-flex flex-row">
+						 <div class="navbar-brand " href="#">&nbsp;</div>
+						 <div class="line-h flex-grow-1"></div>
+					 </div>
+					 
+					<li class="nav-item flex-fill"><a class="nav-link" href="/">Старинные карты</a></li>
+					<li class="nav-item flex-fill"><a class="nav-link" href="/engraving/">Гравюры</a></li>
+					<li class="nav-item flex-fill"><a class="nav-link flex-fill" href="/accessory/">Стильные штучки</a></li>
+					<li class="nav-item  flex-fill dropdown-toggle nav-link" data-toggle="collapse" data-target="#id_pages" aria-expanded="False" role="button">
+						<a  href="#">О&nbsp;старых картах</a>
+					</li>
+					<div class="collapse" id="id_pages">
+						  {% pages Page %}
+					</div>
+					<li class="nav-item flex-fill"><a class="nav-link flex-fill" href="/page/contacts/">Контакты</a></li>
+					
+				</nav>		
+				<nav class="nav flex-md-column flex-grow-1">
+					<div class="dropdown-divider"></div>
+					<li class="nav-item nav-link flex-fill dropdown-toggle" data-toggle="collapse" data-target="#tag_list" >
+						<a href="#">Метки</a>
+					</li>
+					<div class="collapse" id="tag_list">
+								{% tags Tag %}
+					</div>
+				</nav>
+			</div>
+			<div class="col-md-9 p-0 text-center" >
+				<div class="row no-gutters">
+					<div class="col imgback" id="toplogo">
+						<h2 class="text-center shadow-sm align-top text-uppercase">Кудыкины горы</h2>
+						<h3 class="text-center align-bottom ">коллекция старинных карт</h3>
+					</div>
+					<div class="col-md-12">
+						{% block page %}
+						{% endblock page %}
+						{%block pagination%}
+						{% if page_obj.has_other_pages %}
+						<nav aria-label="Page navigation example">
+						  <ul class="pagination justify-content-center">
+							{% if page_obj.has_previous %}
+								<li class="page-item"><a class="page-link" aria-label="Previous" href="?page={{ page_obj.previous_page_number }}"><span aria-hidden="true">&laquo;</span></a></li>
+							{% endif %}
+							{% for pn in page_obj.paginator.page_range %}
+								{% ifequal pn page_obj.number %}
+								<li class="page-item active "><span class="page-link">{{forloop.counter}}</span></li>
+								{% else %}
+								<li class="page-item"><a class="page-link" href="?page={{forloop.counter}}">{{forloop.counter}}</a></li>
+								{% endifequal %}
+							{% endfor %}
+							{% if page_obj.has_next %}
+								<li class="page-item"><a class="page-link" href="?page={{ page_obj.next_page_number }}"><span aria-hidden="true">&raquo;</span></a></li>
+							{% endif %}
+						  </ul>
+						</nav>						
+						{% endif %}
+						{%endblock pagination%}
+					</div>
+				</div> 
 			</div> 
-    </div> 
-</div>	
-</div>
+		</div>
+	</div>
 	{% endblock content %}
 </body>
 </html>

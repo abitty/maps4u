@@ -32,7 +32,7 @@ bg-25: #d19b3d
 	background-position: center;
 	background-repeat: no-repeat;
 	background-size: cover;
-	margin: 0px 15px;
+	#margin: 0px 15px;
 }
 
 .navbar-brand {
@@ -135,9 +135,9 @@ a:hover {
 		height: 40px;
 		background-size: cover;
 	}
-.line-h {
-	height:40px;
-	position: relative;
-}
+	.line-h {
+		height:40px;
+		position: relative;
+	}
 	
 }

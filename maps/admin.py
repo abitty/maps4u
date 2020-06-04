@@ -22,12 +22,12 @@ class ProductAdmin(SummernoteModelAdmin): #admin.ModelAdmin
 		ProductImageInline,
 	]
 	prepopulated_fields = {'slug': ('title',)}
-	list_display = ['title', 'prod_image', 'partnumber', 'price', 'sold']
-	list_filter = ['price', 'sold']
+	list_display = ['title', 'prod_image', 'partnumber', 'year','price', 'sold']
+	list_filter = ['price', 'year','sold']
 	list_editable = ['partnumber', 'price', 'sold']
-	search_fields = ['title','partnumber']
+	search_fields = ['title','partnumber','year']
 	readonly_fields=['prod_image']
-	fields = [('category','tags'),('title','slug','meta_desc','meta_title','meta_h1'),('partnumber','price','sold'),('annotation','epigraph','epigraph_author','year'),('description'),('author','source','material'),('carton','glass'),('mapsize','framesize')]
+	fields = [('category','tags'),('title','slug'),('partnumber','year','price','sold'),('author','source','material'),('carton','glass'),('mapsize','framesize'),('annotation'),('epigraph'),('epigraph_author'),('description'),('meta_desc','meta_title','meta_h1')]
 	summernote_fields = ('description',)
 	'''
 	formfield_overrides = {
