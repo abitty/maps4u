@@ -63,7 +63,7 @@
 					</div>
 				</nav>
 			</div>
-			<div class="col-md-9 p-0 text-center" >
+			<div class="col-md-9 p-0" >
 				<div class="row no-gutters">
 					<div class="col imgback" id="toplogo">
 						<h2 class="text-center shadow-sm align-top text-uppercase">Кудыкины горы</h2>
@@ -74,7 +74,7 @@
 						{% endblock page %}
 						{%block pagination%}
 						{% if page_obj.has_other_pages %}
-						<nav aria-label="Page navigation example">
+						<nav>
 						  <ul class="pagination justify-content-center">
 							{% if page_obj.has_previous %}
 								<li class="page-item"><a class="page-link" aria-label="Previous" href="?page={{ page_obj.previous_page_number }}"><span aria-hidden="true">&laquo;</span></a></li>
