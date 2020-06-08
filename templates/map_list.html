@@ -11,12 +11,40 @@
 		</div>
 		<div class="row row-cols-md-1 row-cols-lg-2">
 		{%  for item in object_list %}
-			<div class = "col">
+			<div class = "col d-flex align-items-stretch">
 			<!--{% cycle 'cF' 'c2' 'c3' 'cL' as cardnum silent %}
 			{% if cardnum ==  'cF'  %}
 			<div class = "col-lg-3">
 			{% endif %}-->
-				<div class="card h-100 bg-light border-0 m-2">
+			
+			<div class=" shadow-lg m-2 p-2">
+				<div class="w-100 text-center">
+					<a href="{{ item.map.url }}">
+						<h3 class="card-title">{{item.map.title}}</h3>
+					</a>
+				</div>
+				<div class = "w-100 d-flex align-items-center justify-content-center" style="height:340px;">
+					{% if item.image %}						
+						{% thumbnail item.image item.map.geometry  as im %}
+						<a href="{{item.map.url}}">
+						<img class="mx-auto d-block" style="margin:{{ im|margin:"320x320" }} "src="{{im.url}}" align="center" width="{{im.width}}" height="{{im.height}}" alt="{{item.map.category}}- {{item.map.title}} - {{item.map.partnumber}}"/>
+						</a>
+						{% endthumbnail %}					
+					{% endif %}
+				</div>
+				<div class="w-100 mx-2">
+					<div><p>{{ item.map.annotation }}</p></div>
+				</div>
+				<div class="d-flex d-flex-grow-1 w-100">&nbsp;</div>
+				<div class="d-flex d-flex-row align-items-end px-2">
+						<div class = ""><p><small class="text-muted">Арт. {{ item.map.partnumber }}</small></p></div>
+						<div class = "ml-auto"><p class="">{{item.map.price}} ₽</p></div>
+				</div>
+			</div>
+			
+				<!--
+			
+				<div class="card h-100 border-0 py-4 mx-2 my-4 shadow-lg">
 					<div class="card-body  map-body">
 						<div class = "row">
 							<div class = "col-sm-12 text-center">
@@ -47,7 +75,11 @@
 						<div><p>{{ item.map.annotation }}</p></div>
 					</div>
 				</div>
+				
+				-->
+				
 			</div>
+				
 			<!--	
 			{% if cardnum == 'cL' %}
 			</div>

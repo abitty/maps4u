@@ -103,13 +103,15 @@ p {
 
 blockquote p {
 	font-size: 80% !important;
-	font-family: 'Kurale', serif;
+	#font-family: 'Kurale', serif;
 	color: #433;
-	line-height: 1.3em;
+	font-size: 1.0em;
+	line-height: 0.5em;
 }
 .blockquote-footer {
-	font-family: 'Kurale', serif;
-	line-height: 1.3em;
+    font-family: 'PT Serif', sans-serif;
+	#font-family: 'Kurale', serif;
+	line-height: 0.5em;
 	color: #877;
 }
 

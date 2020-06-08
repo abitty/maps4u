@@ -7,19 +7,19 @@
 	{% block page %} 
 	<!--<div class="container-fluid"> -->
 		{% if map %}
-			<div class="row">
+			<div class="row no-gutters  justify-content-center">
 				{% for img in images %}
 				<div style="max-width:160px; padding:5px; border: 1px;" class="col-sm-3">
 					<a data-fancybox="grp1" href="{{img.image.url}}" data-caption="{{map.category}} - {{map.title}} - {{map.partnumber}}">
 						{% thumbnail img.image "160x160" crop="center" as im %}
-						<img class="img-fluid" src="{{im.url}}" align="center" width="{{im.width}}" height="{{im.height}}" alt="{{map.title}}"/>
+						<img class="img-fluid img-thumbnail" src="{{im.url}}" align="center" width="{{im.width}}" height="{{im.height}}" alt="{{map.title}}"/>
 						{% endthumbnail %}
 					</a>
 				</div>
 				{% endfor %}
 			</div>	
 				
-			<div class="row">
+			<div class="row no-gutters px-4">
 				<div class="col-sm-4">
 					<div><span class="price">{{ map.price }} ₽ </span></div>
 					<div><span>Артикул: {{ map.partnumber }}</span></div>
@@ -35,7 +35,7 @@
 				</div>
 			</div>
 			
-			<div>
+			<div class="px-4">
 			{% if map.epigraph %}
 			<blockquote class="blockquote text-right epigraph">
 				{{map.epigraph|safe}}
