@@ -46,13 +46,10 @@ class MapList(ListView):
 	template_name='map_list.html'
 	def get_queryset(self, **kwargs):
 		#mp = Product.objects.filter(sold=False).order_by("title")
-		tag_id = self.kwargs['tag_id']
-		print ("args=",tag_id)
-		if tag_id:
+		try:
+			tag_id = self.kwargs['tag_id']
 			mp = Product.objects.select_related('category').filter(tags__id__exact=tag_id,sold=False,category=self.cat_id).order_by("title")
-			print ("list_by_tag")
-			print ("len=",len(mp))
-		else:
+		except KeyError:
 			mp = Product.objects.select_related('category').filter(sold=False,category=self.cat_id).order_by("title")
 		
 		res=[]
