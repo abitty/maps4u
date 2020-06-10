@@ -37,30 +37,34 @@
 			<div class="col-sm p-0 navdiv">
 				<nav class="nav  flex-column">
 					<div class="d-flex flex-row">
-						 <div class="navbar-brand " href="#">&nbsp;</div>
-						 <div class="line-h flex-grow-1"></div>
-						 <div class="float-right d-md-none">
-							<li class="nav-item  flex-fill nav-link" data-toggle="collapse" data-target="main_menu" role="button">
-								<a  href="#">+</a>
-							</li>
-						 </div>
+						<div class="navbar-brand " href="#">&nbsp;</div>
+						<div class="line-h flex-grow-1"></div>
+						<!--
+						<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#id_menu" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Развернуть">
+							<span class="navbar-dark navbar-toggler-icon"></span>
+						</button> -->
+						<div class="float-right d-md-none">
+						<li class="nav-item  flex-fill nav-link" data-toggle="collapse" data-target="#id_menu" role="button">
+							<a  href="#">+</a>
+						</li>
+						</div>
 					 </div>
-					<li class="nav-item flex-fill"><a class="nav-link" href="/">Старинные карты</a></li>
-					<li class="nav-item flex-fill"><a class="nav-link" href="/engraving/">Гравюры</a></li>
-					<li class="nav-item flex-fill"><a class="nav-link flex-fill" href="/accessory/">Стильные штучки</a></li>
-					<li class="nav-item  flex-fill dropdown-toggle nav-link" data-toggle="collapse" data-target="#id_pages" aria-expanded="False" role="button"><a  href="#">О&nbsp;старых картах</a></li>
-					<div class="collapse" id="id_pages">
-						  {% pages Page %}
-					</div>
-					<li class="nav-item flex-fill"><a class="nav-link flex-fill" href="/page/contacts/">Контакты</a></li>
-				</nav>		
-				<nav class="nav flex-md-column flex-grow-1">
-					<div class="dropdown-divider"></div>
-					<li class="nav-item nav-link flex-fill dropdown-toggle" data-toggle="collapse" data-target="#tag_list" >
-						<a class="" href="#">Метки</a>
-					</li>
-					<div class="collapse" id="tag_list">
-								{% tags Tag %}
+					 <div class="collapse d-md-block"id="id_menu">
+						<li class="nav-item flex-fill"><a class="nav-link" href="/">Старинные карты</a></li>
+						<li class="nav-item flex-fill"><a class="nav-link" href="/engraving/">Гравюры</a></li>
+						<li class="nav-item flex-fill"><a class="nav-link flex-fill" href="/accessory/">Стильные штучки</a></li>
+						<li class="nav-item  flex-fill dropdown-toggle nav-link" data-toggle="collapse" data-target="#id_pages" aria-expanded="False" role="button"><a  href="#">О&nbsp;старых картах</a></li>
+						<div class="collapse" id="id_pages">
+							  {% pages Page %}
+						</div>
+						<li class="nav-item flex-fill"><a class="nav-link flex-fill" href="/page/contacts/">Контакты</a></li>
+						<div class="dropdown-divider"></div>
+						<li class="nav-item nav-link flex-fill dropdown-toggle" data-toggle="collapse" data-target="#tag_list" >
+							<a class="" href="#">Метки</a>
+						</li>
+						<div class="collapse" id="tag_list">
+									{% tags Tag %}
+						</div>
 					</div>
 				</nav>
 			</div>

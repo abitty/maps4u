@@ -22,8 +22,8 @@ class ProductAdmin(SummernoteModelAdmin): #admin.ModelAdmin
 		ProductImageInline,
 	]
 	prepopulated_fields = {'slug': ('title',)}
-	list_display = ['title', 'prod_image', 'partnumber', 'year','price', 'sold']
-	list_filter = ['price', 'year','sold']
+	list_display = ['title', 'prod_image', 'category','partnumber', 'year','price', 'sold']
+	list_filter = ['category','price', 'year','sold']
 	list_editable = ['partnumber', 'price', 'sold']
 	search_fields = ['title','partnumber','year']
 	readonly_fields=['prod_image']

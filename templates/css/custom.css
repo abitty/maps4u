@@ -22,6 +22,11 @@ bg-25: #d19b3d
 .nav-link:hover {
 	color: #fff;
 }
+.dropdown-item {
+	background-color: #5e3a4e;
+	color: #edd;
+	font-size: 1em;
+}
 
 .imgback {
 	#background-image: url('/static/images/header4d_c.jpg'); 
@@ -137,6 +142,15 @@ a:hover {
 		height: 40px;
 		background-size: cover;
 	}
+	.nav-item {
+		font-size: 1.3em;
+		padding-bottom:10px;
+		padding-top: 10px;
+	}
+	.dropdown-item {
+		font-size: 1.2em;
+	}
+
 	.line-h {
 		height:40px;
 		position: relative;

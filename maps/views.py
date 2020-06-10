@@ -7,29 +7,53 @@ from django.core.paginator import Paginator
 
 # Create your views here.
 def map_pages(request,page):
-		mp = Product.objects.select_related('category').filter(sold=False,category=4).order_by("title")
-		
-		res=[]
-		for m in mp:
-			item = {}
-			images = []
-			item['map']= m
-			item['image'] = m.image()
-			item['category'] = m.category
-			res.append(item)
-		
-			paginator = Paginator(res, 10)
-			print ("map_pages")
-		return res
+	mp = Product.objects.select_related('category').filter(sold=False,category=4).order_by("title")
+	
+	res=[]
+	for m in mp:
+		item = {}
+		images = []
+		item['map']= m
+		item['image'] = m.image()
+		item['category'] = m.category
+		res.append(item)
+	
+		paginator = Paginator(res, 10)
+		print ("map_pages")
+	return res
+'''		
+def list_by_tag(request, tag_id):
+	mp = Product.objects.filter(tags__id__exact=tag_id)
+	res=[]
+	print ("list_by_tag")
+	print ("len=",len(mp))
+	for m in mp:
+		item = {}
+		item['map']= m
+		item['image'] = m.image()
+		item['category'] = m.category
+		res.append(item)
+	
+	paginator = Paginator(res, 2)
+	return render(request, 'map_list.html', {'object_list': res})
+'''
 	
 class MapList(ListView):
 	#model = Product
 	paginate_by = 10
+	cat_id=4
 	context_object_name = 'maps'
 	template_name='map_list.html'
-	def get_queryset(self):
+	def get_queryset(self, **kwargs):
 		#mp = Product.objects.filter(sold=False).order_by("title")
-		mp = Product.objects.select_related('category').filter(sold=False,category=4).order_by("title")
+		tag_id = self.kwargs['tag_id']
+		print ("args=",tag_id)
+		if tag_id:
+			mp = Product.objects.select_related('category').filter(tags__id__exact=tag_id,sold=False,category=self.cat_id).order_by("title")
+			print ("list_by_tag")
+			print ("len=",len(mp))
+		else:
+			mp = Product.objects.select_related('category').filter(sold=False,category=self.cat_id).order_by("title")
 		
 		res=[]
 		print ("MapList")
@@ -40,8 +64,6 @@ class MapList(ListView):
 			item['image'] = m.image()
 			item['category'] = m.category
 			res.append(item)
-		
-			#paginator = Paginator(res, 10)
 		return res
 		
 		
@@ -56,45 +78,12 @@ class MapDetail(DetailView):
 		res = super().get_context_data(**kwargs)
 		res['images'] = Image.objects.select_related().filter(product=self.object).order_by('order')
 		return res
+		
+class GravList(MapList):
+	cat_id=5
 
-class GravList(ListView):
-	model = Product
-	paginate_by = 20
-	context_object_name = 'maps'
-	template_name='map_list.html'
-	def get_queryset(self):
-		#mp = Product.objects.filter(sold=False).order_by("title")
-		mp = Product.objects.select_related('category').filter(sold=False,category=5).order_by("title")
-		
-		res=[]
-		for m in mp:
-			item = {}
-			images = []
-			item['map']= m
-			item['image'] = m.image()
-			item['category'] = m.category
-			res.append(item)
-		return res
-
-class AccList(ListView):
-	model = Product
-	paginate_by = 20
-	context_object_name = 'maps'
-	template_name='map_list.html'
-	def get_queryset(self):
-		#mp = Product.objects.filter(sold=False).order_by("title")
-		mp = Product.objects.select_related('category').filter(sold=False,category=5).order_by("title")
-		
-		res=[]
-		for m in mp:
-			item = {}
-			images = []
-			item['map']= m
-			item['image'] = m.image()
-			item['category'] = m.category
-			res.append(item)
-		
-		return res
+class AccList(MapList):
+	cat_id=6
 		
 class PageDetail(DetailView):
 	model = Page
