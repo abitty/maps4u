@@ -22,16 +22,20 @@
 			<div class="col-sm-4">
 				<div><span class="price">{{ map.price }} ₽ </span></div>
 				<div><span>Артикул: {{ map.partnumber }}</span></div>
-				<div>
-				{% if map.author %}<p>Картограф: {{map.author}}</p>{% endif %}
-				{% if map.year %}<p>Год издания: {{map.year}}г.</p>{% endif %}
-				{% if map.material %}<p>{{map.material}}</p>{% endif %}
-				{% if map.source %}<p>Источник:  {{map.source}}</p>{% endif %}
-				</div>
 			</div>	
 			<div class="col-sm-8 text-right">
 				<div><h1 class="mapname">{{map.title}}</h1></div>
 			</div>
+		</div>
+		<div class="row no-gutters map_info px-4 table mr-auto justify-items-center">
+		<table >
+		{% if map.author %}<tr><td>Картограф</td><td>{{map.author}}</td></tr>{% endif %}
+		{% if map.year %}<tr><td>Год издания</td><td>{{map.year}}г.</td></tr>{% endif %}
+		{% if map.material %}<tr><td>Техника</td><td>{{map.material}}</td></tr>{% endif %}
+		{% if map.source %}<tr><td>Источник</td><td>{{map.source}}</td></tr>{% endif %}
+		{% if map.carton %}<tr><td>Паспарту</td><td>{{map.get_carton_display}}</td></tr>{% endif %}
+		{% if map.glass %}<tr><td>Стекло</td><td>{{map.get_glass_display}}</td></tr>{% endif %}
+		</table>
 		</div>
 		
 		<div class="px-4">

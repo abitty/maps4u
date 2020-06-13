@@ -180,6 +180,17 @@ p {
     line-height: 1.5em;
     color: #433;
 }
+.price {
+    font-size: 1.3em;
+    font-weight: 700;	
+}
+.map_info {
+	line-height: 1.0em;
+}
+
+td {
+	background-color:#f3f3f3;
+}
 
 a {
 	color: #0056b3;
