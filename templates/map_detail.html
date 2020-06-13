@@ -23,10 +23,10 @@
 				<div><span class="price">{{ map.price }} ₽ </span></div>
 				<div><span>Артикул: {{ map.partnumber }}</span></div>
 				<div>
-				{% if map.author %}<span>Картограф: {{map.author}}{% endif %}
-				{% if map.year %}<span>{{map.year}}г.{% endif %}
-				{% if map.material %}<span>{{map.material}}{% endif %}
-				{% if map.source %}<span>{{map.source}}{% endif %}
+				{% if map.author %}<p>Картограф: {{map.author}}</p>{% endif %}
+				{% if map.year %}<p>Год издания: {{map.year}}г.</p>{% endif %}
+				{% if map.material %}<p>{{map.material}}</p>{% endif %}
+				{% if map.source %}<p>Источник:  {{map.source}}</p>{% endif %}
 				</div>
 			</div>	
 			<div class="col-sm-8 text-right">
