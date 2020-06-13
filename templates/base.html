@@ -37,15 +37,11 @@
 			<div class="col-sm p-0 navdiv">
 				<nav class="nav  flex-column">
 					<div class="d-flex flex-row">
-						<div class="navbar-brand " href="#">&nbsp;</div>
+						<a class="navbar-brand " href="/">&nbsp;</a>
 						<div class="line-h flex-grow-1"></div>
-						<!--
-						<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#id_menu" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Развернуть">
-							<span class="navbar-dark navbar-toggler-icon"></span>
-						</button> -->
 						<div class="float-right d-md-none">
 						<li class="nav-item  flex-fill nav-link" data-toggle="collapse" data-target="#id_menu" role="button">
-							<a  href="#">+</a>
+							<span><i class="fa fa-bars"></i></span>
 						</li>
 						</div>
 					 </div>
@@ -53,18 +49,38 @@
 						<li class="nav-item flex-fill"><a class="nav-link" href="/">Старинные карты</a></li>
 						<li class="nav-item flex-fill"><a class="nav-link" href="/engraving/">Гравюры</a></li>
 						<li class="nav-item flex-fill"><a class="nav-link flex-fill" href="/accessory/">Стильные штучки</a></li>
-						<li class="nav-item  flex-fill dropdown-toggle nav-link" data-toggle="collapse" data-target="#id_pages" aria-expanded="False" role="button"><a  href="#">О&nbsp;старых картах</a></li>
+						<li class="nav-item  flex-fill dropdown-toggle nav-link" data-toggle="collapse" data-target="#id_pages" aria-expanded="False" role="button">
+							<a  class="nav-item" href="#">О&nbsp;старых картах</a>
+						</li>
 						<div class="collapse" id="id_pages">
 							  {% pages Page %}
 						</div>
 						<li class="nav-item flex-fill"><a class="nav-link flex-fill" href="/page/contacts/">Контакты</a></li>
 						<div class="dropdown-divider"></div>
 						<li class="nav-item nav-link flex-fill dropdown-toggle" data-toggle="collapse" data-target="#tag_list" >
-							<a class="" href="#">Метки</a>
+							<a class="nav-item" href="#">Метки</a>
 						</li>
-						<div class="collapse" id="tag_list">
+						<div class="collapse " id="tag_list">
+						<div class="d-flex d-flex-column flex-wrap">
 									{% tags Tag %}
 						</div>
+						</div>
+						{% block sort %}
+						<div class="form-check form-check-inline">
+							<input class="form-check-input" type="radio" name="SortOrder" id="SortByTitle" value="byTitle">
+							<label class="form-check-label" for="SortByTitle">по названию</label>
+						</div>
+						<div class="form-check form-check-inline">
+							<input class="form-check-input" type="radio" name="SortOrder" id="SortByYear" value="byYear">
+							<label class="form-check-label" for="SortByYear">по году издания</label>
+						</div>
+						{% endblock sort %}
+						<form class="form-inline ml-3 my-2 d-flex" action="/" method="get">
+						<div class="d-flex flex-wrap">
+							<input class="sbtn flex-shrink-1" type="text" placeholder="название или артикул" aria-label="Search" name="s">
+							<button class="sbtn" type="submit"><i class="fa fa-search"></i></button>
+						</div>
+						</form>
 					</div>
 				</nav>
 			</div>

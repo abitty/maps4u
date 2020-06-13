@@ -1,52 +1,51 @@
 {% extends 'base.html' %}
 {% load thumbnail %} 
 
-{% block title %} {{ block.super }} - {{map.title}} {% endblock title %}
-{% block navtop %} {{ block.super }} {% endblock navtop %} 
-{% block navleft %} {{ block.super }} {% endblock navleft %}
-	{% block page %} 
-	<!--<div class="container-fluid"> -->
-		{% if map %}
-			<div class="row no-gutters  justify-content-center">
-				{% for img in images %}
-				<div style="max-width:160px; padding:5px; border: 1px;" class="col-sm-3">
-					<a data-fancybox="grp1" href="{{img.image.url}}" data-caption="{{map.category}} - {{map.title}} - {{map.partnumber}}">
-						{% thumbnail img.image "160x160" crop="center" as im %}
-						<img class="img-fluid img-thumbnail" src="{{im.url}}" align="center" width="{{im.width}}" height="{{im.height}}" alt="{{map.title}}"/>
-						{% endthumbnail %}
-					</a>
-				</div>
-				{% endfor %}
-			</div>	
-				
-			<div class="row no-gutters px-4">
-				<div class="col-sm-4">
-					<div><span class="price">{{ map.price }} ₽ </span></div>
-					<div><span>Артикул: {{ map.partnumber }}</span></div>
-					<div>
-					{% if map.author %}<span>Картограф: {{map.author}}{% endif %}
-					{% if map.year %}<span>{{map.year}}г.{% endif %}
-					{% if map.material %}<span>{{map.material}}{% endif %}
-					{% if map.source %}<span>{{map.source}}{% endif %}
-					</div>
-				</div>	
-				<div class="col-sm-8 text-right">
-					<div><h1 class="mapname">{{map.title}}</h1></div>
-				</div>
+{% block title %} {{map.category}} - {{map.title}} {% endblock title %}
+{% block sort %} {% endblock sort %}
+{% block page %} 
+<!--<div class="container-fluid"> -->
+	{% if map %}
+		<div class="row no-gutters  justify-content-center">
+			{% for img in images %}
+			<div style="max-width:160px; padding:5px; border: 1px;" class="col-sm-3">
+				<a data-fancybox="grp1" href="{{img.image.url}}" data-caption="{{map.category}} - {{map.title}} - {{map.partnumber}}">
+					{% thumbnail img.image "160x160" crop="center" as im %}
+					<img class="img-fluid img-thumbnail" src="{{im.url}}" align="center" width="{{im.width}}" height="{{im.height}}" alt="{{map.title}}"/>
+					{% endthumbnail %}
+				</a>
 			</div>
+			{% endfor %}
+		</div>	
 			
-			<div class="px-4">
-			{% if map.epigraph %}
-			<blockquote class="blockquote text-right epigraph">
-				{{map.epigraph|safe}}
-				{% if map.epigraph_author %} <footer class="blockquote-footer font-weight-lighter">{{map.epigraph_author|safe}}</footer>{% endif %}
-			</blockquote>
-			{% endif %}
-			{{ map.description|safe }}
+		<div class="row no-gutters px-4">
+			<div class="col-sm-4">
+				<div><span class="price">{{ map.price }} ₽ </span></div>
+				<div><span>Артикул: {{ map.partnumber }}</span></div>
+				<div>
+				{% if map.author %}<span>Картограф: {{map.author}}{% endif %}
+				{% if map.year %}<span>{{map.year}}г.{% endif %}
+				{% if map.material %}<span>{{map.material}}{% endif %}
+				{% if map.source %}<span>{{map.source}}{% endif %}
+				</div>
+			</div>	
+			<div class="col-sm-8 text-right">
+				<div><h1 class="mapname">{{map.title}}</h1></div>
 			</div>
-				
-		{% else %}
-			<p>такой карты нет.</p>
+		</div>
+		
+		<div class="px-4">
+		{% if map.epigraph %}
+		<blockquote class="blockquote text-right epigraph">
+			{{map.epigraph|safe}}
+			{% if map.epigraph_author %} <footer class="blockquote-footer font-weight-lighter">{{map.epigraph_author|safe}}</footer>{% endif %}
+		</blockquote>
 		{% endif %}
+		{{ map.description|safe }}
+		</div>
+			
+	{% else %}
+		<p>такой карты нет.</p>
+	{% endif %}
 <!--	</div> -->
-	{% endblock page %}	
+{% endblock page %}	

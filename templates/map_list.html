@@ -3,7 +3,7 @@
 {% block title %} {{ block.super }} - Карты {% endblock title %}
 
 {% block navtop %}  {% endblock navtop %} 
-
+{% block sort %} {% endblock sort %}
 	{% block page %} 
 	<main>
 		<div class="col">
@@ -27,7 +27,7 @@
 					{% if item.image %}						
 						{% thumbnail item.image item.map.geometry  as im %}
 						<a href="{{item.map.url}}">
-						<img class="mx-auto d-block" style="margin:{{ im|margin:"320x320" }} "src="{{im.url}}" align="center" width="{{im.width}}" height="{{im.height}}" alt="{{item.map.category}}- {{item.map.title}} - {{item.map.partnumber}}"/>
+						<img class="mx-auto d-block" style="margin:{{ im|margin:"320x320" }} "src="{{im.url}}" align="center" width="{{im.width}}" height="{{im.height}}" alt="{{object_list.category}}- {{item.map.title}} - {{item.map.partnumber}}"/>
 						</a>
 						{% endthumbnail %}					
 					{% endif %}

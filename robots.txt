@@ -1,0 +1,11 @@
+User-agent: *
+# Allow Directives
+Allow: /static
+# Private pages
+Disallow: /tags/
+Disallow: /admin/
+# Files
+Disallow: /search
+
+Sitemap: https://maps4u.ru/sitemap.xml
+Host: maps4u.ru

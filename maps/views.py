@@ -2,8 +2,9 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from django.views.generic.list import ListView
 from django.views.generic.detail import DetailView
-from maps.models import Product, Image, Page
+from maps.models import Product, Image, Page, Category
 from django.core.paginator import Paginator
+from django.db.models import Q
 
 # Create your views here.
 def map_pages(request,page):
@@ -48,18 +49,21 @@ class MapList(ListView):
 		#mp = Product.objects.filter(sold=False).order_by("title")
 		try:
 			tag_id = self.kwargs['tag_id']
-			mp = Product.objects.select_related('category').filter(tags__id__exact=tag_id,sold=False,category=self.cat_id).order_by("title")
+			mp = Product.objects.select_related('category').filter(tags__id__exact=tag_id,sold=False,category=self.cat_id).order_by("year")
 		except KeyError:
-			mp = Product.objects.select_related('category').filter(sold=False,category=self.cat_id).order_by("title")
+			search_for=self.request.GET.get("s", "")
+			if search_for != "":
+				search_res = Q(title__icontains=search_for) | Q(partnumber__icontains=search_for)
+				mp = Product.objects.select_related('category').filter(search_res,sold=False,category=self.cat_id).order_by("year")
+			else:
+				mp = Product.objects.select_related('category').filter(sold=False,category=self.cat_id).order_by("title")
 		
 		res=[]
-		print ("MapList")
 		for m in mp:
 			item = {}
 			images = []
 			item['map']= m
 			item['image'] = m.image()
-			item['category'] = m.category
 			res.append(item)
 		return res
 		
@@ -78,6 +82,7 @@ class MapDetail(DetailView):
 		
 class GravList(MapList):
 	cat_id=5
+	template_name='gr_list.html'
 
 class AccList(MapList):
 	cat_id=6
