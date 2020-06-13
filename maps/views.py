@@ -56,7 +56,7 @@ class MapList(ListView):
 				search_res = Q(title__icontains=search_for) | Q(partnumber__icontains=search_for)
 				mp = Product.objects.select_related('category').filter(search_res,sold=False,category=self.cat_id).order_by("year")
 			else:
-				mp = Product.objects.select_related('category').filter(sold=False,category=self.cat_id).order_by("title")
+				mp = Product.objects.select_related('category').filter(sold=False,category=self.cat_id).order_by("year")
 		
 		res=[]
 		for m in mp:
