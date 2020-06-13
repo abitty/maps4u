@@ -25,7 +25,7 @@ bg-25: #d19b3d
 
 
 a.nav-link {
-	color: inherit;
+	color: #edd;
 	text-decoration: none;
 }
 a.nav-link:hover {
@@ -33,7 +33,7 @@ a.nav-link:hover {
 }
 
 a.nav-item {
-	color: inherit;
+	color: #edd;
 	text-decoration: none;
 }
 a.nav-item:hover {
@@ -45,13 +45,20 @@ a.nav-item:hover {
 	background-color: #5e3a4e;
 	color: #edd;
 	font-size: 1em;
+	text-decoration: none;
 }
 .dropdown-item:hover {
 	background-color: #5e3a4e;
 	color: #fff;
 }
 
+.mapname {
+	text-decoration: none;
+	color: inherit;
+}
+
 a.tags{
+	color: #edd;
 	margin: 5px 15px 5px 15px;
 	padding: 0px 5px 0px 5px;
 	font-size:0.8em;
