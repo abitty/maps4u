@@ -24,7 +24,7 @@
 				<div><span>Артикул: {{ map.partnumber }}</span></div>
 			</div>	
 			<div class="col-sm-8 text-right">
-				<div><h1 class="mapname">{{map.title}}</h1></div>
+				<div><h1 class="mapname">{{map.title|safe}}</h1></div>
 			</div>
 		</div>
 		<div class="row no-gutters map_info table  px-4 mr-auto justify-items-center">

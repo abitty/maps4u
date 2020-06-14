@@ -144,9 +144,9 @@ class Product(models.Model):
 		
 	def geometry(self):
 		if self.vertical:
-			return "x320"
+			return "x280"
 		else:
-			return "320"
+			return "280"
 	def url(self):
 		return "/items/{}".format(self.slug)
 		

@@ -23,11 +23,11 @@
 						<h3 class="card-title">{{item.map.title}}</h3>
 					</a>
 				</div>
-				<div class = "w-100 d-flex align-items-center justify-content-center" style="height:340px;">
+				<div class = "w-100 d-flex align-items-center justify-content-center" style="height:340px; width:340px;">
 					{% if item.image %}						
-						{% thumbnail item.image item.map.geometry  as im %}
+						{% thumbnail item.image item.map.geometry as im %}
 						<a href="{{item.map.url}}">
-						<img class="mx-auto d-block" style="margin:{{ im|margin:"320x320" }} "src="{{im.url}}" align="center" width="{{im.width}}" height="{{im.height}}" alt="{{object_list.category}}- {{item.map.title}} - {{item.map.partnumber}}"/>
+						<img class="mx-auto d-block" src="{{im.url}}" align="center" width="{{im.width}}" height="{{im.height}}" alt="{{object_list.category}}- {{item.map.title|safe}} - {{item.map.partnumber}}"/>
 						</a>
 						{% endthumbnail %}					
 					{% endif %}

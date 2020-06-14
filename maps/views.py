@@ -49,14 +49,18 @@ class MapList(ListView):
 		#mp = Product.objects.filter(sold=False).order_by("title")
 		try:
 			tag_id = self.kwargs['tag_id']
-			mp = Product.objects.select_related('category').filter(tags__id__exact=tag_id,sold=False,category=self.cat_id).order_by("year")
+			mp = Product.objects.filter(tags__id__exact=tag_id).order_by("year")
 		except KeyError:
-			search_for=self.request.GET.get("s", "")
+			search_for=self.request.GET.get("q", "")
+			print (self.request)
 			if search_for != "":
 				search_res = Q(title__icontains=search_for) | Q(partnumber__icontains=search_for)
-				mp = Product.objects.select_related('category').filter(search_res,sold=False,category=self.cat_id).order_by("year")
+				mp = Product.objects.select_related('category').filter(search_res).order_by("year")
 			else:
-				mp = Product.objects.select_related('category').filter(sold=False,category=self.cat_id).order_by("year")
+				if not self.cat_id is None:
+					mp = Product.objects.select_related('category').filter(sold=False,category=self.cat_id).order_by("year")
+				else:
+					mp = Product.objects.filter(sold=True).order_by("year")
 		
 		res=[]
 		for m in mp:
@@ -86,6 +90,9 @@ class GravList(MapList):
 
 class AccList(MapList):
 	cat_id=6
+class ArchList(MapList):
+	cat_id=None
+	
 		
 class PageDetail(DetailView):
 	model = Page
