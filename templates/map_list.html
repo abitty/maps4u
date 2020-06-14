@@ -24,12 +24,18 @@
 					</a>
 				</div>
 				<div class = "w-100 d-flex align-items-center justify-content-center" style="height:340px; width:340px;">
-					{% if item.image %}						
-						{% thumbnail item.image item.map.geometry as im %}
+					{% if item.image|is_portrait %}				
+						{% thumbnail item.image "x280" as im %}
 						<a href="{{item.map.url}}">
 						<img class="mx-auto d-block" src="{{im.url}}" align="center" width="{{im.width}}" height="{{im.height}}" alt="{{object_list.category}}- {{item.map.title|safe}} - {{item.map.partnumber}}"/>
 						</a>
-						{% endthumbnail %}					
+						{% endthumbnail %}		
+					{% else %}			
+						{% thumbnail item.image "280" as im %}
+						<a href="{{item.map.url}}">
+						<img class="mx-auto d-block" src="{{im.url}}" align="center" width="{{im.width}}" height="{{im.height}}" alt="{{object_list.category}}- {{item.map.title|safe}} - {{item.map.partnumber}}"/>
+						</a>
+						{% endthumbnail %}		
 					{% endif %}
 				</div>
 				<div class="w-100 mx-2">
