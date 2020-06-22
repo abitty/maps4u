@@ -4,7 +4,9 @@
 {% block title %} {{ block.super }} - {{map.title}} {% endblock title %}
 {% block page %}
 {% if page %} 
+<div class = "mx-3">
 <h1>{{page.title}}</h1>
 {{page.text|safe}}
+</div>
 {% endif %} 
 {% endblock page %}

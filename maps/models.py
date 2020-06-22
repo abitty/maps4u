@@ -187,6 +187,7 @@ class Image(models.Model):
 class Page(models.Model):
 	title = models.CharField("Название", max_length=128,blank=False,db_index=True,unique=True)
 	slug = models.SlugField(allow_unicode=False,unique=True,db_index=True)
+	parent = models.IntegerField("Номер меню", blank = True, null=True,default=0)
 	text = models.TextField("HTML",blank=True)
 	order = models.IntegerField("Порядок", blank = True, null=True,default=10)
 	meta_desc = models.CharField("meta-description",max_length=63,blank=False,default='')

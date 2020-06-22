@@ -80,11 +80,12 @@ class ImageAdmin(admin.ModelAdmin):
 		else:	
 			return "-"
 	
-class PageAdmin(admin.ModelAdmin):	
+class PageAdmin(SummernoteModelAdmin):	
 	prepopulated_fields = {'slug': 'title',}
-	list_display = ['title', 'order']
-	list_editable = ['order']
+	list_display = ['title', 'parent','order']
+	list_editable = ['parent','order']
 	prepopulated_fields = {'meta_desc': ('title',),'meta_title':('title',),'meta_h1':('title',),}
+	summernote_fields = ('text',)
 
 admin.site.register(Product, ProductAdmin)
 admin.site.register(Category, CategoryAdmin)
