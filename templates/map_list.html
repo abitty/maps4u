@@ -7,7 +7,7 @@
 	{% block page %} 
 	<main>
 		<div class="col">
-		<h1>Старинные карты</h1>
+		<h1>{% block h1 %}Старинные карты{% endblock h1 %}</h1>
 		</div>
 		<div class="row row-cols-md-1 row-cols-lg-2">
 		{%  for item in object_list %}

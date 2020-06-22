@@ -90,6 +90,8 @@ class GravList(MapList):
 
 class AccList(MapList):
 	cat_id=6
+	template_name='acc_list.html'
+	
 class ArchList(MapList):
 	cat_id=None
 	

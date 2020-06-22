@@ -84,7 +84,7 @@ class PageAdmin(SummernoteModelAdmin):
 	prepopulated_fields = {'slug': 'title',}
 	list_display = ['title', 'parent','order']
 	list_editable = ['parent','order']
-	prepopulated_fields = {'meta_desc': ('title',),'meta_title':('title',),'meta_h1':('title',),}
+	prepopulated_fields = {'slug': ('title',),'meta_desc': ('title',),'meta_title':('title',),'meta_h1':('title',),}
 	summernote_fields = ('text',)
 
 admin.site.register(Product, ProductAdmin)

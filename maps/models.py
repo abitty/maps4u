@@ -53,6 +53,7 @@ class Tag(models.Model):
 class Category(models.Model):
 	title = models.CharField("Название", max_length=128,blank=False)
 	#products = model.ForeignKey(Product,on_delete=models.CASCADE)
+	#text = models.TextField("Аннотация",blank=True)
 	slug = models.SlugField(allow_unicode=False, unique=True)
 	image = models.ImageField("Изображение категории",upload_to = 'uploads/',blank=True)
 	meta_desc = models.CharField("meta-description",max_length=63,blank=False,default='')
