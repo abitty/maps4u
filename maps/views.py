@@ -40,7 +40,6 @@ def list_by_tag(request, tag_id):
 '''
 	
 class MapList(ListView):
-	#model = Product
 	paginate_by = 10
 	cat_id=4
 	context_object_name = 'maps'
@@ -113,18 +112,11 @@ class MapListPrice(MapList):
 		mp = Product.objects.all().order_by("price")
 		res=[]
 		item = {}
-		images=[]
 		for m in mp:
 			images = []
 			item['map']= m
-			print("id=",m.id," title=",m.title)
 			images = Image.objects.filter(id=m.id)
-			#images = Image.objects.all()
-			print("len images=",len(images))
-			for i in images:
-				print ("image url=",i.url)
 			item['images'] = images
 			res.append(item)
-			print('title: ',m.title, 'url: ',m.id)
 		return res
 	

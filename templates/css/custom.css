@@ -104,8 +104,8 @@ button.sbtn{
 
 
 .imgback {
-	#background-image: url('/static/images/header4d_c.jpg'); 
-	background: linear-gradient(90deg, rgba(94, 58, 78, 1), rgba(94, 58, 78, 0.1) 25%),url('/static/images/header4d_c.jpg');   #5e3a4e = rgba(94, 58, 78, 1)
+	background: url('/static/images/header4d_c.jpg');
+	/*background: linear-gradient(90deg, rgba(94, 58, 78, 1), rgba(94, 58, 78, 0.1) 25%),url('/static/images/header4d_c.jpg');   #5e3a4e = rgba(94, 58, 78, 1)*/
 	width: 100%;
 	#height:200px;
 	position: initial;
@@ -220,10 +220,28 @@ h1.mapname {
 	font-family: 'Ruslan Display',serif;
 }
 
+div.phone {
+    font-family: 'PT Serif', sans-serif;
+	#font-family: 'Kurale', serif;
+	line-height: 0.5em;
+	position: relative;
+	top: 15px;
+}
+a.phone {
+	color: #edd;
+	text-decoration: none;
+	font-size: 0.8em;
+    font-family: 'PT Serif', sans-serif;
+	line-height: 0.5em;
+}
+a.phone.hover {
+	color: #877;
+}
 
 @media (max-width: 767.98px) {
 	.imgback {
-		background: linear-gradient(180deg, rgba(94, 58, 78, 1) , rgba(94, 58, 78, 0.1)) 20%,url('/static/images/header4d_c.jpg'); 
+		#background: linear-gradient(180deg, rgba(94, 58, 78, 1) , rgba(94, 58, 78, 0.1)) 20%,url('/static/images/header4d_c.jpg');
+		background: url('/static/images/header4d_c.jpg');
 	}
 	.navbar-brand {
 		background-image: url('/static/images/logo80x80.png'); 

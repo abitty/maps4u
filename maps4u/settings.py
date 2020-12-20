@@ -86,9 +86,6 @@ SUMMERNOTE_CONFIG = {
 
 
 THUMBNAIL_FORMAT = 'JPEG'
-THUMBNAIL_KVSTORE = 'sorl.thumbnail.kvstores.redis_kvstore.KVStore'
-THUMBNAIL_REDIS_HOST = 'localhost' # default
-THUMBNAIL_REDIS_PORT = 6379 # default
 
 
 """
@@ -178,8 +175,8 @@ DATABASES = {
 	'PASSWORD': get_secret("MYSQL_PASSWORD"),
 	'USER': get_secret("MYSQL_USER"),
 	'CHARSET':'utf8',
-	'PORT':'3306',
-	'HOST':'localhost',
+	'PORT':get_secret("MYSQL_PORT"),
+	'HOST':'127.0.0.1',
 	'OPTIONS': {
 		#	'read_default_file': os.path.join(BASE_DIR,'podarok_mysql.conf'),
 			'init_command': "SET sql_mode='STRICT_TRANS_TABLES,NO_ZERO_DATE,NO_ZERO_IN_DATE'; SET default_storage_engine=INNODB",
@@ -233,7 +230,7 @@ LOGGING = {
 		'file': {
 			'level': 'DEBUG',
 			'class': 'logging.FileHandler',
-			'filename': '/var/www/maps4u/logs/debug.log',
+			'filename': '/var/log/maps4u/debug.log',
 		},
     },
 	'loggers': {
@@ -257,4 +254,4 @@ LOGGING = {
 # secure
 
 SECURE_CONTENT_TYPE_NOSNIFF = True
-from .settings_local import *
+from .local import *
