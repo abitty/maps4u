@@ -1,5 +1,5 @@
 asgiref==3.3.1
-Django==3.1.4
+Django==3.1.10
 django-redis==4.12.1
 django-summernote==0.8.11.6
 djangorestframework==3.12.2
