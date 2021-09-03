@@ -33,6 +33,7 @@ def get_secret(setting, secrets=secrets):
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/' # для медии в шаблонах
 FILE_UPLOAD_PERMISSIONS = 0o644
+DEFAULT_AUTO_FIELD = 'django.db.models.AutoField'
 
 X_FRAME_OPTIONS = 'SAMEORIGIN'
 SUMMERNOTE_THEME = 'bs3'  # Show summernote with Bootstrap4
@@ -100,9 +101,10 @@ CACHES = {
 LOGIN_URL = '/login/'
 
 # пустая папка, сюда будет собирать статику collectstatic
-STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 #урл для шаблонов
-STATIC_URL = '/static/' 
+STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+
 
 STATICFILES_DIRS = [
 	os.path.join(BASE_DIR, "assets"),

@@ -74,6 +74,29 @@ a.tags:hover {
 	margin:
 }
 
+.filter-div {
+	background-color: #fafafa;
+	color: #333;
+}
+
+a.filter {
+	color: #333;
+	#border-color: #fafafa;
+	border:1px dotted #fafafa;
+	margin: 5px 15px 5px 15px;
+	padding: 0px 5px 0px 5px;
+	font-size: 1.0em;
+	text-decoration: none;
+}
+
+a.filter:hover {
+	text-decoration: none;
+	color: #8e6a7e;
+#	border-color: #5e3a4e;
+	border:1px dotted #5e3a4e;
+	margin:
+}
+
 .sbtn{
 	border:1px solid;
 	border-color:#8e6a7e;
@@ -273,5 +296,10 @@ a.phone.hover {
 		margin: 5px 20px 5px 20px;
 		padding: 0px 10px 0px 10px;
 	}
-	
+	a.filter{
+		font-size:1.0em;
+		margin: 5px 20px 5px 20px;
+		padding: 0px 10px 0px 10px;
+	}
+
 }
