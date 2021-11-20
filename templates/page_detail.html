@@ -2,6 +2,8 @@
 {% load thumbnail %} 
 
 {% block title %} {{ block.super }} - {{map.title}} {% endblock title %}
+{% block meta-description %}{{page.meta_desc}}{% endblock meta-description %}
+
 {% block page %}
 {% if page %} 
 <div class = "mx-3">
