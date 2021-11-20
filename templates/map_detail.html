@@ -3,6 +3,7 @@
 
 {% block title %} {{map.category}} - {{map.title}} {% endblock title %}
 {% block sort %} {% endblock sort %}
+{% block meta-description %}{%if map %}{{map.meta_desc}}{% endif %}{% endblock meta-description %}
 {% block page %} 
 <!--<div class="container-fluid"> -->
 	{% if map %}
