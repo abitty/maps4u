@@ -18,6 +18,8 @@ from django.urls import path,include
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 from django.conf import settings
 from django.conf.urls.static import static
+from django.contrib.sitemaps.views import sitemap
+from maps.sitemaps import ProductSitemap, PagesSitemap
 
 
 '''from django.contrib.staticfiles.urls import staticfiles_urlpatterns
@@ -26,12 +28,19 @@ from django.conf.urls.static import static
 '''
 
 
+sitemaps = {
+    'items':ProductSitemap,
+	'pages':PagesSitemap,
+}
+
 urlpatterns = [
     path('admin/', admin.site.urls),
 	path('api-auth/', include('rest_framework.urls')),
     path('',include('maps.urls')),
 	path('summernote/', include('django_summernote.urls')),
-] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT) 
+	path('sitemap.xml', sitemap, {'sitemaps': sitemaps},
+     name='django.contrib.sitemaps.views.sitemap')
+] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 
 if settings.DEBUG:
 	if settings.MEDIA_ROOT:

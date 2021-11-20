@@ -146,12 +146,15 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'sorl.thumbnail',
+	'django.contrib.sites',
+	'django.contrib.sitemaps',
+	'sorl.thumbnail',
 	'rest_framework',
 	'django_summernote',
     'maps',
 ]
 
+SITE_ID=1
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
