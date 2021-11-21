@@ -11,7 +11,7 @@ Disallow: /starinnye-karty/
 Disallow: /gravyury/
 Disallow: /home
 Disallow: /karty/
-Disallow /new-products
+Disallow: /new-products
 
 
 Sitemap: https://maps4u.ru/sitemap.xml
