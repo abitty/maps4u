@@ -6,6 +6,13 @@ Disallow: /tags/
 Disallow: /admin/
 # Files
 Disallow: /search
+Disallow: /content/
+Disallow: /starinnye-karty/
+Disallow: /gravyury/
+Disallow: /home
+Disallow: /karty/
+Disallow /new-products
+
 
 Sitemap: https://maps4u.ru/sitemap.xml
 Host: maps4u.ru
