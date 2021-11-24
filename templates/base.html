@@ -29,6 +29,38 @@
 	{% block title %}Старинные карты{% endblock title %}
 	</title>
 	<meta name="description" content="{% block meta-description %}Главная страница{% endblock meta-description %}"/>
+	<script type ="text/javascript" >
+	$(document).ready(function () {
+		$(".collapse").on('shown.bs.collapse', function () { // добавим id элемента в activeitems
+        	//console.log ("shown.bs.collapse");
+        	var active = $(this).attr('id');
+        	//console.log(active);
+    		var activeitems = localStorage.activeitems === undefined ? new Array() : JSON.parse(localStorage.activeitems);
+    		if ($.inArray(active,activeitems)==-1) //check that the element is not in the array
+		        activeitems.push(active);
+    		localStorage.activeitems=JSON.stringify(activeitems);
+		});
+		$(".collapse").on('hidden.bs.collapse', function () { // уберём id элемента из activeitems при сворачивании
+    		var active = $(this).attr('id');
+    		var activeitems= localStorage.activeitems === undefined ? new Array() : JSON.parse(localStorage.activeitems);
+    		var elementIndex=$.inArray(active,activeitems);
+			if (elementIndex!==-1) //check the array
+			{
+				activeitems.splice(elementIndex,1); //remove item from array
+			}
+			localStorage.activeitems=JSON.stringify(activeitems); //save array on localStorage
+		});
+
+		var activeitems=localStorage.activeitems === undefined ? new Array() : JSON.parse(localStorage.activeitems); //get all activeitems
+		for (var i in activeitems){ //<-- i is the id of the item, activeitems - saved in localstorage
+			//if ($("#"+activeitems[i]).hasClass('panel-collapse')) // check if this is a panel
+			if (activeitems[i] != "id_menu")
+			{
+				$("#"+activeitems[i]).addClass("show");
+			}
+    	}
+    });
+	</script>
 	<!-- Yandex.Metrika counter -->
 	<script type="text/javascript" >
 	   (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
@@ -85,7 +117,7 @@
 						<li class="nav-item nav-link flex-fill dropdown-toggle" data-toggle="collapse" data-target="#tag_list" >
 							<a class="nav-item" href="#">Метки</a>
 						</li>
-						<div class="collapse " id="tag_list">
+						<div class="collapse" id="tag_list">
 						<div class="d-flex d-flex-column flex-wrap">
 									{% tags Tag %}
 						</div>

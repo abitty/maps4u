@@ -7,41 +7,9 @@ from django.core.paginator import Paginator
 from django.db.models import Q
 
 # Create your views here.
-def map_pages(request,page):
-	mp = Product.objects.select_related('category').filter(sold=False,category=4).order_by("title")
-	
-	res=[]
-	for m in mp:
-		item = {}
-		images = []
-		item['map']= m
-		item['image'] = m.image()
-		item['category'] = m.category
-		res.append(item)
-	
-		paginator = Paginator(res, 10)
-		print ("map_pages")
-	return res
-'''		
-def list_by_tag(request, tag_id):
-	mp = Product.objects.filter(tags__id__exact=tag_id)
-	res=[]
-	print ("list_by_tag")
-	print ("len=",len(mp))
-	for m in mp:
-		item = {}
-		item['map']= m
-		item['image'] = m.image()
-		item['category'] = m.category
-		res.append(item)
-	
-	paginator = Paginator(res, 2)
-	return render(request, 'map_list.html', {'object_list': res})
-'''
-	
 class MapList(ListView):
-	paginate_by = 10
 	cat_id=4
+	paginate_by = 10
 	context_object_name = 'maps'
 	template_name='map_list.html'
 	def get_queryset(self, **kwargs):
@@ -69,10 +37,8 @@ class MapList(ListView):
 			item['image'] = m.image()
 			res.append(item)
 		return res
-		
-		
-		
-		
+
+
 class MapDetail(DetailView):
 	model = Product
 	context_object_name = 'map'
